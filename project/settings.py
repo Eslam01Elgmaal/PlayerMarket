@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'players',
     'about',
     'coaches',
-    
+    'home',
+    'supplies',
 ]
 
 MIDDLEWARE = [
