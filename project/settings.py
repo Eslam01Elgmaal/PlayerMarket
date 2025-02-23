@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'coaches',
     'home',
     'supplies',
+    'contact',
 ]
 
 MIDDLEWARE = [
