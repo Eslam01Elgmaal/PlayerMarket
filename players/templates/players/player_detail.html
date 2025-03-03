@@ -1,0 +1,149 @@
+
+{% extends "base.html" %}
+
+{% load static %}
+{% block body %}
+    <!-- Page Container -->
+    <div class="w3-content w3-margin-top" style="max-width:1400px;">
+
+        <!-- The Grid -->
+        <div class="w3-row-padding">
+
+            <!-- Left Column -->
+            <div class="w3-third">
+
+                <div class="w3-white w3-text-grey w3-card-4">
+                    <div class="w3-display-container">
+
+                            <img src="{{ player.imge.url }}" style="width:100%" alt="Avatar">
+
+                        <div class="w3-display-bottomleft w3-container w3-text-black">
+                            <h2>{{ player.name }}</h2>
+                        </div>
+                    </div>
+                    <div class="w3-container">
+                        <p><i class="fa fa-briefcase fa-fw w3-margin-right w3-large w3-text-teal"></i>Football Player
+                        </p>
+                        <p><i class="fa fa-home fa-fw w3-margin-right w3-large w3-text-teal"></i>{{player.club_name}}</p>
+                        <p><i class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-teal"></i>{{player.email}}
+                        </p>
+                        <p><i class="fa fa-phone fa-fw w3-margin-right w3-large w3-text-teal"></i>{{player.phone_numper}}</p>
+                        <hr>
+
+                        <p class="w3-large"><b><i
+                                    class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>Skills</b></p>
+                                    <p>Dribbling</p>
+                                    <div class="w3-light-grey w3-round-xlarge w3-small">
+                                        <div class="w3-container w3-center w3-round-xlarge w3-teal progress-bar" 
+                                             style="width: {{ player.dribbling }}%;" 
+                                             data-value="{{ player.dribbling }}">
+                                            {{ player.dribbling }}%
+                                        </div>
+                                    </div>
+
+                                    <p>Passing</p>
+                                    <div class="w3-light-grey w3-round-xlarge w3-small">
+                                        <div class="w3-container w3-center w3-round-xlarge w3-teal progress-bar" 
+                                             style="width: {{ player.passing }}%;" 
+                                             data-value="{{ player.passing }}">
+                                            {{ player.passing }}%
+                                        </div>
+                                    </div>
+ 
+                                    <p>Shooting</p>
+                                    <div class="w3-light-grey w3-round-xlarge w3-small">
+                                        <div class="w3-container w3-center w3-round-xlarge w3-teal progress-bar" 
+                                            style="width: {{ player.shooting }}%;" 
+                                            data-value="{{ player.shooting }}">
+                                            {{ player.shooting }}%
+                                        </div>
+                                                    </div>
+                                        <p>Tackling</p>
+                                        <div class="w3-light-grey w3-round-xlarge w3-small">
+                                            <div class="w3-container w3-center w3-round-xlarge w3-teal progress-bar" 
+                                                style="width: {{ player.tackling }}%;" 
+                                                data-value="{{ player.tackling }}">
+                                                {{ player.tackling }}%
+                                            </div>
+                                        </div>
+                                        <br>
+                        
+                        <p class="w3-large w3-text-theme"><b><i
+                                    class="fa fa-globe fa-fw w3-margin-right w3-text-teal"></i>Languages</b></p>
+                        <p>{{ player.languages }}</p>
+                        <div class="w3-light-grey w3-round-xlarge">
+                            <div class="w3-round-xlarge w3-teal" style="height:24px;width:{{ player.language_strength }}%"></div>
+                        </div>
+                        <p>English</p>
+                        <div class="w3-light-grey w3-round-xlarge">
+                            <div class="w3-round-xlarge w3-teal" style="height:24px;width:60%"></div>
+                        </div>
+                        <p>Catalan</p>
+                        <div class="w3-light-grey w3-round-xlarge">
+                            <div class="w3-round-xlarge w3-teal" style="height:24px;width:20%"></div>
+                        </div>
+                        <br>
+                    </div>
+                </div><br>
+
+                <!-- End Left Column -->
+            </div>
+
+            <!-- Right Column -->
+            <div class="w3-twothird">
+
+                <div class="w3-container w3-card w3-white w3-margin-bottom">
+                    <h2 class="w3-text-grey w3-padding-16"><i
+                            class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Work Experience
+                    </h2>
+                    <div class="w3-container">
+                        <h5 class="w3-opacity"><b>Professional Football Player / {{ player.club_name }}</b></h5>
+                        <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>{{ player.date_from }} - <span
+                                class="w3-tag w3-teal w3-round">Current</span></h6>
+                        <p>{{player.description}}</p>
+                        <hr>
+                    </div>
+                    <div class="w3-container">
+                        <h5 class="w3-opacity"><b>{{ player.last_club_name }}</b></h5>
+                        <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>{{ player.date_from_year }} - {{ player.date_to_year }}
+                        </h6>
+                        <p>{{ player.description_lastclub }}</p>
+                        <hr>
+                    </div>
+                </div>
+
+                <div class="w3-container w3-card w3-white">
+                    <h2 class="w3-text-grey w3-padding-16"><i
+                            class="fa fa-certificate fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Education</h2>
+                    <div class="w3-container">
+                        <h5 class="w3-opacity"><b>{{player.academy_name}} Academy</b></h5>
+                        <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>{{ player.date_from_academy }} - {{ player.date_to_academy }}</h6>
+                        <p>{{ player.description_academy }}
+                        </p>
+                        <hr>
+                    </div>
+                    <div class="w3-container">
+                        <h5 class="w3-opacity"><b>{{player.school_name}}</b></h5>
+                        <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>{{ player.date_from_school }} - {{ player.date_to_school }}</h6>
+                        <p>{{ player.description_school }}</p>
+                        <hr>
+                    </div>
+                </div>
+
+                <div class="w3-container w3-card w3-white">
+                    <video src="{% static 'assets/images/videoplayback.mp4' %}" controls width="100%"></video>
+                </div>
+            </div>
+
+            <!-- End Right Column -->
+        </div>
+
+        <!-- End Grid -->
+    </div>
+    <div class="back">
+        <a href="home.html" target="_blank" class="btn1">Back To Home</a>
+    </div>
+
+    <!-- End Page Container -->
+    </div>
+    {% endblock body %}

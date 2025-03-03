@@ -24,6 +24,7 @@ class Players(models.Model):
         MinValueValidator(0),
         MaxValueValidator(100)
     ])
+
     last_club_name = models.CharField(max_length=50)
 
     # هنا هضيف المتغيرات المطلوبة
@@ -56,7 +57,7 @@ class Players(models.Model):
 
     school_name = models.CharField(max_length=100, null=True, blank=True)
     date_from_school = models.IntegerField(null=True, blank=True)
-    date_to_scshool = models.IntegerField(null=True, blank=True)
+    date_to_school = models.IntegerField(null=True, blank=True)
     description_school = models.TextField(max_length=3000, null=True, blank=True)
 
     video = models.FileField(upload_to='players_videos/', null=True, blank=True)
