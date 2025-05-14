@@ -46,6 +46,8 @@ INSTALLED_APPS = [
     'home',
     'supplies',
     'contact',
+
+    'rest_framework',
 ]
 
 MIDDLEWARE = [

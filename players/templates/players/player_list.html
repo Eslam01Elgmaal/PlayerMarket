@@ -20,75 +20,59 @@
 
   <div class="bg" style="background: url('{% static 'images/bg.jpg' %}') no-repeat center center/cover;"></div>
   <div id="preview"></div>
-  <div class="fut-player-card" id="player-card" style="background-image: url('{% static 'images/card_bg/titan.png' %}');">
-    <div class="player-card-top" id="card-top" style="color: #fce398;">
-      <div class="player-master-info">
-            <div id="player-rating" class="player-rating">
-            <span>00</span>
-            </div>
-            <div class="player-position" id="player-position">
-            <span>POSITION</span>
-            </div>
-            <div class="player-nation">
-            <img src="{% static 'images/vietnam.png' %}" alt="Vn" draggable="false" />
-            </div>
-            <div class="player-club">
-            <img id="logo" src="{% static 'images/vozer_black.png' %}" alt="Vozer" draggable="false" />
-            </div>
-        </div>
-        <div class="player-picture">
-            <img id="avatar" src="{% static 'images/player.png' %}" alt="Player" draggable="false"/ style="position: absolute; margin-top: 80px ">
+  <div class="player_card">
 
-            <div class="player-extra" id="hidden-attrs" style="color: #fce398; right: ">
-                <span>5*Tạo Nét</span>
-                <span>5*Gỗ</span>
-            </div>
-      </div>
-    </div>
-    <div class="player-card-bottom">
-      <div class="player-info" id="player-info" style="color: #fce398;">
-        <div class="player-name" id="player-name">
-          <span>PLAYER NAME</span>
-        </div>
-        <div class="player-features">
-          <div class="player-features-col" id="attack-attrs" style="border-right: 1px solid #fce398;">
-            <span>
-              <div class="player-feature-value">20</div>
-              <div class="player-feature-title">Ghi bàn</div>
-            </span>
-            <span>
-              <div class="player-feature-value">100</div>
-              <div class="player-feature-title">Thể Lực</div>
-            </span>
-            <span>
-              <div class="player-feature-value">100</div>
-              <div class="player-feature-title">Sáng Tạo</div>
-            </span>
-            <span>
-              <div class="player-feature-value">100</div>
-              <div class="player-feature-title">Tốc Độ</div>
-            </span>
-          </div>
-          <div class="player-features-col" id="defend-attrs">
-            <span>
-              <div class="player-feature-value">100</div>
-              <div class="player-feature-title">Chuyền Bóng</div>
-            </span>
-            <span>
-              <div class="player-feature-value">100</div>
-              <div class="player-feature-title">Phản xạ</div>
-            </span>
-            <span>
-              <div class="player-feature-value">100</div>
-              <div class="player-feature-title">Kèm người</div>
-            </span>
-            <span>
-              <div class="player-feature-value">100</div>
-              <div class="player-feature-title">Cản Phá</div>
-            </span>
-          </div>
-        </div>
-      </div>
-    </div>
+    // Font | Optional
+link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=Saira+Semi+Condensed:300,400,700")
+// Wrapper | For this page - !!ignore
+.wrapper
+  // *** fut-player-card ***
+  .fut-player-card
+      // Player Card Top
+      .player-card-top
+          .player-master-info
+              .player-rating
+                  span 97
+              .player-position
+                  span RW
+              .player-nation
+                  img(src="https://selimdoyranli.com/cdn/fut-player-card/img/argentina.svg", alt="Argentina", draggable="false")
+              .player-club
+                  img(src="https://selimdoyranli.com/cdn/fut-player-card/img/barcelona.svg", alt="Barcelona", draggable="false")
+          .player-picture
+              img(src="https://selimdoyranli.com/cdn/fut-player-card/img/messi.png", alt="Messi", draggable="false")
+              .player-extra
+                  span 4*SM
+                  span 4*WF
+      // Player Card Bottom
+      .player-card-bottom
+          .player-info
+              // Player Name
+              .player-name
+                  span MESSI
+              // Player Features
+              .player-features
+                  .player-features-col
+                      span
+                          .player-feature-value 97
+                          .player-feature-title PAC
+                      span
+                          .player-feature-value 95
+                          .player-feature-title SHO
+                      span
+                          .player-feature-value 94
+                          .player-feature-title PAS
+                  .player-features-col
+                      span
+                          .player-feature-value 99
+                          .player-feature-title DRI
+                      span
+                          .player-feature-value 35
+                          .player-feature-title DEF
+                      span
+                          .player-feature-value 68
+                          .player-feature-title PHY
+
   </div>
+
 {% endblock body %}
