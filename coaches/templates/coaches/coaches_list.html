@@ -1,0 +1,33 @@
+
+{% extends "base.html" %}
+
+{% load static %}
+{% block body %}
+
+
+
+    <!-- slider -->
+    <div style="height: calc(100vh - 464px); min-height: 500px">
+    <div id="carousel-wrapper" style="width: 100%; margin-top: 160px; margin-bottom: 50px">
+      <div id="menu">
+          <div id="current-option">
+            <span id="current-option-text1" data-previous-text="" data-next-text=""></span>
+            <span id="current-option-text2" data-previous-text="" data-next-text=""></span>
+          </div>
+          <button id="previous-option"></button>
+          <button id="next-option"></button>
+      </div>
+      <div id="image"></div>
+      
+    </div>
+    <div class="players">    <ul class="player" ><li> <a href="Jurgen Klopp.html" class="btn"><h5>Jurgen klopp</h5></a></li>
+      <li><a href="carlo ancelotti.html" class="btn"><h5>Carlo</h5></a></li>
+      <li><a href="Pep Guardiola.html" class="btn"><h5>Guardiola</h5></a></li>
+      <li><a href="José Mourinho.html" class="btn"><h5>Jose Mourinho</h5></a></li>
+    </ul>
+  </div>
+    </div>
+
+
+
+{% endblock body %}

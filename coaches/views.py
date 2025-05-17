@@ -5,7 +5,7 @@ from .models import Coaches
 # Create your views here.
 
 
-def coaches_lsit(request):
+def coaches_list(request):
     coaches = Coaches.objects.all()
 
     return render(request, 'coaches/coaches_list.html', {'coaches': coaches})
@@ -15,4 +15,4 @@ def coaches_lsit(request):
 class CoachesDetailView(DetailView):
     model = Coaches
     template_name = 'coaches/coaches_detail.html'
-    context_object_name = 'coaches'
+    context_object_name = 'coach'
