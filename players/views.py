@@ -12,6 +12,10 @@ def players_list(request):
     return render(request, 'players/player_list.html', {'players': players})
 
 
+
+
+
+
 class PlayersDetailView(DetailView):
     model = Players
     template_name = 'players/player_detail.html'

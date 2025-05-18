@@ -11,3 +11,8 @@ class HomeAdmin(admin.ModelAdmin):
 
     choose_us = ('titel', 'desc_why', )
     
+
+
+@admin.register(Why)
+class WhyAdmin(admin.ModelAdmin):
+    list_display = ("titel", "desc_why")

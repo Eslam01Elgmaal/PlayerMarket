@@ -8,9 +8,11 @@ class Home(models.Model):
     intro_desc = models.CharField(max_length=1000)
     descraption = models.CharField(max_length=75)
     email = models.EmailField(max_length=254)
+    logo = models.ImageField(upload_to= "home/")
+    logo_black = models.ImageField(upload_to= "home/")
     addres = models.CharField(max_length=120)
     phone_numper = models.CharField(max_length=22)
-
+    videoH = models.FileField(upload_to='home_videos/', null=True, blank=True)
     facebook = models.URLField(blank=True, null=True)
     x = models.URLField(blank=True, null=True)
     instagram = models.URLField(blank=True, null=True)

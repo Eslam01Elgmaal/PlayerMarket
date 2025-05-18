@@ -15,19 +15,17 @@
 
       <!-- (- #HERO & slider (frist section in home page) )-->
 
-      <section>
-        <Video src="./assets/images/videoplayback.mp4"  type="video/mp4" class="home-video" height="100%" loop muted autoplay controls></Video>
+      <section style="margin-top: -30px;">
+        <Video src="{{ home.videoH.url }}"  type="video/mp4" class="home-video" height="100%" loop muted autoplay controls></Video>
 
         <div class="container">
 
           <div class="hero-content" style="position: absolute;
                top: 550px;">
             <!-- text image -->
-            <h1 class="h1 hero-title"><img src="./assets/images/logo-light2.png" width="300" height="100"  alt=""> </h1>
+            <h1 class="h1 hero-title"><img src="{{home.logo.url}}" width="300" height="100"  alt=""> </h1>
 
-            <p class="hero-text">
-              We are a creative agency that supports players' agency, focusing on establishing long-term cooperative relationships with our clients.
-            </p>
+            <p class="hero-text"> {{home.descraption }}</p>
 
            
 
@@ -126,7 +124,7 @@
       <section class="stats" aria-label="our stats">
         <div class="container">
 
-          <ul class="stats-card has-bg-image" style="background-image: url('./assets/images/stats-bg.jpg')">
+          <ul class="stats-card has-bg-image" style="background-image: url('static/assets/images/stats-bg.jpg')">
             <li>
               <p class="card-text">
                 <span class="h1">700</span>
@@ -162,19 +160,17 @@
         <div class="container">
 
           <figure class="about-banner">
-            <img src="./assets/images/about-banner.png" width="800" height="580" loading="lazy" alt="about banner"
+            <img src=".{{home.logo_black.url}}" width="800" height="580" loading="lazy" alt="about banner"
               class="w-100">
           </figure>
 
           <div class="about-content">
 
-            <p class="section-subtitle" id="about-label">Why Choose Us?</p>
-
-            <h2 class="h2 section-title">
-              We bring solutions to make life easier for our clients.
-            </h2>
+     
 
             <ul>
+
+              {% for why in why_list %}
 
               <li class="about-item">
                 <div class="accordion-card expanded" data-accordion>
@@ -183,58 +179,18 @@
                     <button class="accordion-btn" data-accordion-btn>
                       <ion-icon name="chevron-down-outline" aria-hidden="true" class="down"></ion-icon>
 
-                      <spna class="span h5">Professional Design</spna>
+                      <spna class="span h5">{{why.titel}}</span>
                     </button>
                   </h3>
 
-                  <p class="accordion-content">
-                    Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo
-                    sit amet risus. Cras mattis consectetur purus sit amet fermentum. Praesent commodo cursus magna,
-                    vel.
+                  <p class="accordion-content">{{why.desc_why}}
                   </p>
 
                 </div>
               </li>
 
-              <li class="about-item">
-                <div class="accordion-card" data-accordion>
 
-                  <h3 class="card-title">
-                    <button class="accordion-btn" data-accordion-btn>
-                      <ion-icon name="chevron-down-outline" aria-hidden="true" class="down"></ion-icon>
-
-                      <spna class="span h5">Top-Notch Support</spna>
-                    </button>
-                  </h3>
-
-                  <p class="accordion-content">
-                    Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo
-                    sit amet risus. Cras mattis consectetur purus sit amet fermentum. Praesent commodo cursus magna,
-                    vel.
-                  </p>
-
-                </div>
-              </li>
-
-              <li class="about-item">
-                <div class="accordion-card" data-accordion>
-
-                  <h3 class="card-title">
-                    <button class="accordion-btn" data-accordion-btn>
-                      <ion-icon name="chevron-down-outline" aria-hidden="true" class="down"></ion-icon>
-
-                      <spna class="span h5">Exclusive Assets</spna>
-                    </button>
-                  </h3>
-
-                  <p class="accordion-content">
-                    Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo
-                    sit amet risus. Cras mattis consectetur purus sit amet fermentum. Praesent commodo cursus magna,
-                    vel.
-                  </p>
-
-                </div>
-              </li>
+              {% endfor %}
 
             </ul>
 
