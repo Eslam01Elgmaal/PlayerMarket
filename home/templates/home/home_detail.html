@@ -1,0 +1,263 @@
+ 
+       
+{% extends "base.html" %}
+
+{% block title %} bass & Shot {% endblock %}
+
+{% load static %}
+{% block body %}
+
+
+
+ 
+ <main>
+    <article>
+
+      <!-- (- #HERO & slider (frist section in home page) )-->
+
+      <section>
+        <Video src="./assets/images/videoplayback.mp4"  type="video/mp4" class="home-video" height="100%" loop muted autoplay controls></Video>
+
+        <div class="container">
+
+          <div class="hero-content" style="position: absolute;
+               top: 550px;">
+            <!-- text image -->
+            <h1 class="h1 hero-title"><img src="./assets/images/logo-light2.png" width="300" height="100"  alt=""> </h1>
+
+            <p class="hero-text">
+              We are a creative agency that supports players' agency, focusing on establishing long-term cooperative relationships with our clients.
+            </p>
+
+           
+
+          </div>
+        </div>
+      </section>
+
+      <!-- (- Advantages of the company) -->
+
+      <section class="section service" aria-labelledby="service-label">
+        <div class="container">
+
+          <p class="section-subtitle" id="service-label"></p>
+
+          <h2 class="h2 section-title">
+            Advantages of the company pass & shot
+          </h2>
+
+          <ul class="grid-list">
+
+            <li>
+              <div class="service-card">
+
+                <div class="card-icon">
+                  <!-- map icon -->
+                  <ion-icon name="map-outline"aria-hidden="true"></ion-icon>
+                </div>
+
+                <h3 class="h4 card-title">Full coverage of all governorates of Egypt.</h3>
+
+                <p class="card-text">
+                  We seek to discover talents in various governorates of Egypt as an application of the principle of equal
+                   opportunities among all talented players who have not found a refuge to nurture and showcase their skills.
+                </p>
+
+              </div>
+            </li>
+
+            <li>
+              <div class="service-card">
+
+                <div class="card-icon">
+                  <ion-icon name="shield-checkmark-outline" aria-hidden="true"></ion-icon>
+                </div>
+
+                <h3 class="h4 card-title">Professional team</h3>
+
+                <p class="card-text">
+                  pass & shot.com operates under the management of a competent team that includes all specialties
+                  to ensure the effective management of the system, which guarantees the success of all beneficiaries.
+                </p>
+
+              </div>
+            </li>
+
+            <li>
+              <div class="service-card">
+
+                <div class="card-icon">
+                  <ion-icon name="cloud-download-outline" aria-hidden="true"></ion-icon>
+                </div>
+
+                <h3 class="h4 card-title">A comprehensive package of services.</h3>
+
+                <p class="card-text">
+                  Some believe that marketing players is the sole purpose of the project,
+                  but we offer a range of services that ensure the advancement of players technically, physically, and mentally.
+                </p>
+
+              </div>
+            </li>
+
+            <li>
+              <div class="service-card">
+
+                <div class="card-icon">
+                  <ion-icon name="pie-chart-outline" aria-hidden="true"></ion-icon>
+                </div>
+
+                <h3 class="h4 card-title">Marketing players locally and internationally.</h3>
+
+                <p class="card-text">
+                  From our belief in the Egyptian player and his ability to compete,
+                  it was necessary for us to harness all the capabilities so that the world could see those exceptional talents.
+                </p>
+
+              </div>
+            </li>
+
+          </ul>
+
+        </div>
+      </section>
+       <!-- (- #STATS) (counter)  -->
+
+      <section class="stats" aria-label="our stats">
+        <div class="container">
+
+          <ul class="stats-card has-bg-image" style="background-image: url('./assets/images/stats-bg.jpg')">
+            <li>
+              <p class="card-text">
+                <span class="h1">700</span>
+                <spna class="span">players sold </spna>
+              </p>
+            </li>
+            <li>
+              <p class="card-text">
+                <span class="h1">100</span>
+                <spna class="span">coaches solds</spna>
+              </p>
+            </li>
+            <li>
+              <p class="card-text">
+                <span class="h1">46</span>
+                <spna class="span">OUR PLAYERS</spna>
+              </p>
+            </li>
+            <li>
+              <p class="card-text">
+                <span class="h1">150</span>
+                <spna class="span">TRANSFERS </spna>
+              </p>
+            </li>
+          </ul>
+
+        </div>
+      </section>
+
+      <!-- - #ABOUt us  -->
+
+      <section class="about" aria-labelledby="about-label">
+        <div class="container">
+
+          <figure class="about-banner">
+            <img src="./assets/images/about-banner.png" width="800" height="580" loading="lazy" alt="about banner"
+              class="w-100">
+          </figure>
+
+          <div class="about-content">
+
+            <p class="section-subtitle" id="about-label">Why Choose Us?</p>
+
+            <h2 class="h2 section-title">
+              We bring solutions to make life easier for our clients.
+            </h2>
+
+            <ul>
+
+              <li class="about-item">
+                <div class="accordion-card expanded" data-accordion>
+
+                  <h3 class="card-title">
+                    <button class="accordion-btn" data-accordion-btn>
+                      <ion-icon name="chevron-down-outline" aria-hidden="true" class="down"></ion-icon>
+
+                      <spna class="span h5">Professional Design</spna>
+                    </button>
+                  </h3>
+
+                  <p class="accordion-content">
+                    Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo
+                    sit amet risus. Cras mattis consectetur purus sit amet fermentum. Praesent commodo cursus magna,
+                    vel.
+                  </p>
+
+                </div>
+              </li>
+
+              <li class="about-item">
+                <div class="accordion-card" data-accordion>
+
+                  <h3 class="card-title">
+                    <button class="accordion-btn" data-accordion-btn>
+                      <ion-icon name="chevron-down-outline" aria-hidden="true" class="down"></ion-icon>
+
+                      <spna class="span h5">Top-Notch Support</spna>
+                    </button>
+                  </h3>
+
+                  <p class="accordion-content">
+                    Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo
+                    sit amet risus. Cras mattis consectetur purus sit amet fermentum. Praesent commodo cursus magna,
+                    vel.
+                  </p>
+
+                </div>
+              </li>
+
+              <li class="about-item">
+                <div class="accordion-card" data-accordion>
+
+                  <h3 class="card-title">
+                    <button class="accordion-btn" data-accordion-btn>
+                      <ion-icon name="chevron-down-outline" aria-hidden="true" class="down"></ion-icon>
+
+                      <spna class="span h5">Exclusive Assets</spna>
+                    </button>
+                  </h3>
+
+                  <p class="accordion-content">
+                    Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo
+                    sit amet risus. Cras mattis consectetur purus sit amet fermentum. Praesent commodo cursus magna,
+                    vel.
+                  </p>
+
+                </div>
+              </li>
+
+            </ul>
+
+          </div>
+
+        </div>
+      </section>
+
+      <!-- (-footer  (#CTA) -->
+
+      <section class="cta" aria-label="call to action">
+        <div class="container">
+
+          <h2 class="h2 section-title">
+            Join our community by using our services and grow your business.
+          </h2>
+
+          <a href="#" class="btn btn-primary">login</a>
+
+        </div>
+      </section>
+
+    </article>
+  </main>
+
+{% endblock body %}
