@@ -124,3 +124,6 @@ const initAccordion = function (currentAccordion) {
 }
 
 for (let i = 0, len = accordions.length; i < len; i++) { initAccordion(accordions[i]); }
+
+
+/*pagination*/

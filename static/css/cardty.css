@@ -5,59 +5,44 @@
 	box-sizing: border-box;
 }
 
-.card-grid {
-    display: grid !important;
-    grid-template-columns: repeat(4, 1fr);
 
-    gap: 20px;
-    padding: 20px;
-    justify-content: center; 
-}
+.fifa-card-section{
 
-
-body {
-	font-family: 'Saira Semi Condensed', sans-serif;
-	font-weight: 400;
-	position: relative;
-	display: -webkit-box;
-	display: -ms-flexbox;
-	display: flex;
-	-webkit-box-align: center;
-	-ms-flex-align: center;
-	align-items: center;
-	-webkit-box-pack: center;
-	-ms-flex-pack: center;
+	text-align: center;
 	justify-content: center;
-	width: 100%;
-	height: 100vh;
-	min-height: 700px;
-	background: url("https://media.playstation.com/is/image/SCEA/fifa-19-stadium-background-blur-01-ps4-us-08jun18?$native_nt$") no-repeat center center/cover;
+	margin-top: 100px;
+
+
 }
 
-body:after {
-	content: '@selimdoyranli';
-	font-size: 1rem;
-	color: #aaa;
-	position: fixed;
-	bottom: 20px;
-	right: 20px;
-	z-index: 2;
+.card-grid {
+  display: grid;
+
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px; 
+  width: 100%;
+  max-width: 1300px; 
+  margin: auto;
 }
+
+.cards-container {
+  width: 100%;
+
+}
+
+
 
 
 /*
   *** fut-player-card styles ***
 */
 
-
-
-
 .fut-player-card {
 	position: relative;
-	width: 250px;
-	height: 40px;
+	width: 300px;
+	height: 485px;
 	background-image: url(https://selimdoyranli.com/cdn/fut-player-card/img/card_bg.png);
-	background-position: center;
+	background-position: center center;
 	background-size: 100% 100%;
 	background-repeat: no-repeat;
 	padding: 3.8rem 0;
@@ -66,12 +51,6 @@ body:after {
 	-o-transition: 200ms ease-in;
 	transition: 200ms ease-in;
 }
-
-.fifa-card-section {
-
-	text-align: center;
-}
-
 
 .fut-player-card .player-card-top {
 	position: relative;
@@ -87,11 +66,13 @@ body:after {
 	line-height: 2.2rem;
 	font-weight: 300;
 	padding: 1.5rem 0;
+	margin-top: 15px;
 	text-transform: uppercase;
 }
 
 .fut-player-card .player-card-top .player-master-info .player-rating {
 	font-size: 2rem;
+
 }
 
 .fut-player-card .player-card-top .player-master-info .player-position {
@@ -228,3 +209,18 @@ body:after {
 .fut-player-card .player-card-bottom .player-info .player-features .player-features-col:last-child {
 	border: 0;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

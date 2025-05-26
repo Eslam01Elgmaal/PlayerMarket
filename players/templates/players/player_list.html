@@ -37,20 +37,22 @@
                                     draggable="false" />
                             </div>
                         </div>
-                        <div class="player-picture"
-                            style=" margin-top: 40px; display: flex ; justify-content: center ; margin-right: 85px transform: scale(1.2); ">
-                            <img src="{{player.imge.url}}">
 
+                        <div class="player-picture">
+                            <img class="player-img" src="{{ player.imge.url }}">
                         </div>
+
                     </div>
                     <div class="player-card-bottom">
                         <div class="player-info">
                             <!-- Player Name-->
                             <div class="player-name" style=" color: #e9cc74;">
                                 <span>{{player.name}}</span>
+
+
                             </div>
                             <!-- Player Features-->
-                            <div class="player-features" style=" margin-top: 50px;  ">
+                            <div class="player-features" >
                                 <div class="player-features-col">
                                     <span>
                                         <div class="player-feature-value">97</div>
@@ -80,10 +82,17 @@
                                     </span>
                                 </div>
 
+
+               
+
                                 
                             </div>
-                            <button type="button" class="btn btn-warning">Player Detail</button>
+                            <a href="{{ player.get_absolute_url }}" class="btn btn-warning" style="margin: 20px 0 0 10px; border-color: #e9cc74;">
+                                Player Detail
+                            </a>
                         </div>
+
+ 
                     </div>
 
                 </div>
@@ -92,8 +101,43 @@
 
             {% endfor %}
 
-    </div>        
-</section>
 
+
+    </div> 
+
+
+    {% if is_paginated %}
+        <nav aria-label="Page navigation">
+        <ul class="pagination pagination-lg d-flex justify-content-center">
+
+            {# Previous page number #}
+            {% if page_obj.has_previous %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ page_obj.previous_page_number }}">{{ page_obj.previous_page_number }}</a>
+            </li>
+            {% endif %}
+
+            {# Current page (highlighted) #}
+            <li class="page-item active" aria-current="page">
+            <span class="page-link">
+                {{ page_obj.number }}
+                <span class="sr-only">(current)</span>
+            </span>
+            </li>
+
+            {# Next page number #}
+            {% if page_obj.has_next %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ page_obj.next_page_number }}">{{ page_obj.next_page_number }}</a>
+            </li>
+            {% endif %}
+
+        </ul>
+        </nav>
+{% endif %}
+
+   
+      
+</section>
 
 {% endblock body %}

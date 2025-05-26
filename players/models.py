@@ -2,6 +2,8 @@ from django.db import models
 from django.core.exceptions import ValidationError
 from django.core.validators import MinValueValidator, MaxValueValidator
 from datetime import datetime
+from django.utils.text import slugify
+from django.urls import reverse
 
 
 # Create your models here.
@@ -39,6 +41,29 @@ class Players(models.Model):
             MinValueValidator(1990),  # لا يقبل السنة قبل 1990
         ]
     )
+
+
+
+    slug = models.SlugField(null=True , blank=True , unique=True)
+
+    def get_absolute_url(self):
+
+        return reverse('players:player_detail',kwargs={'slug': self.slug}) 
+
+        
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            base_slug = slugify(self.name)
+            slug = base_slug
+            counter = 1
+            while Players.objects.filter(slug=slug).exists():
+                slug = f"{base_slug}-{counter}"
+                counter += 1
+            self.slug = slug
+        super().save(*args, **kwargs)
+
+
+
 
     def clean(self):
         """تطبيق الفاليديشن عند حفظ الموديل"""

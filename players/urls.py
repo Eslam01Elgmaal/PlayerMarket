@@ -14,7 +14,7 @@ app_name = 'players'
 
 urlpatterns = [
     path('', players_list, name='player_list'),
-    path('<int:pk>/', PlayersDetailView.as_view(), name='player_detail'),
+    path('<slug:slug>', PlayersDetailView.as_view(), name='player_detail'),
 
     # API endpoints
     path('api/', PlayerListAPI.as_view(), name='player_list_api'),
