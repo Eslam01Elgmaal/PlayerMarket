@@ -1,9 +1,22 @@
-from django.shortcuts import render
-from django.views.generic import TemplateView
-from .models import ContactMessage
+# views.py
+from django.shortcuts import render, redirect
+from django.contrib import messages
+from .forms import ContactForm
+from django.core.mail import send_mail
+from django.conf import settings 
 
-# Create your views here.
 
+def contact_us(request):
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            contact_message = form.save()
+            messages.success(request, 'تم إرسال الرسالة بنجاح!')
+            return redirect('contact:contact')
 
-class ContactView(TemplateView):
-    template_name = 'contact/contact.html'
+    else:
+    
+        form = ContactForm()
+
+    return render(request, 'contact/contact.html', {'form': form})
+

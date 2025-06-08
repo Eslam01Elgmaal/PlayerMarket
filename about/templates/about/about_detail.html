@@ -1,139 +1,157 @@
-
 {% extends "base.html" %}
 
 {% block title %} About Us {% endblock %}
 
 {% load static %}
 {% block body %}
-    <div class="about-section">
-        <h1>About Us</h1>
-        </div>
-      
-      <h2 style="text-align:center">Our Team</h2>
-      <div class="row">
-        <div class="column">
-          <div class="card">
-            <img src="assets/images/hero-slide-1.jpg" alt="Jane" style="width:100%; ">
-            <div class="container">
-              <h2>Jane Doe</h2>
-              <p class="title">CEO & Founder</p>
-              <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-              <p>jane@example.com</p>
-              <p><button class="button">Contact</button></p>
-            </div>
-          </div>
-        </div>
-      
-        <div class="column">
-          <div class="card">
-            <img src="assets/images/hero-slide-1.jpg" alt="Mike" style="width:100%">
-            <div class="container">
-              <h2>Mike Ross</h2>
-              <p class="title">Art Director</p>
-              <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-              <p>mike@example.com</p>
-              <p><button class="button">Contact</button></p>
-            </div>
-          </div>
-        </div>
-      
-        <div class="column">
-          <div class="card">
-            <img src="assets/images/hero-slide-1.jpg" alt="John" style="width:100%">
-            <div class="container">
-              <h2>John Doe</h2>
-              <p class="title">Designer</p>
-              <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-              <p>john@example.com</p>
-              <p><button class="button">Contact</button></p>
-            </div>
-          </div>
-        </div>
-      </div>
-<!-- about us section-->
-      <section class="about" aria-labelledby="about-label">
-        <div class="container">
 
-          <figure class="about-banner">
-            <img src="./assets/images/about-banner.png" width="800" height="580" loading="lazy" alt="about banner"
-              class="w-100">
-          </figure>
 
-          <div class="about-content">
+<style>
+  .container {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+    /* لو الشاشة ضيقة يتحركوا لسطر جديد */
+  }
 
-            <p class="section-subtitle" id="about-label">Why Choose Us?</p>
+  .card {
+    width: 400px;
+    height: 500px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+    text-align: left;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
-            <h2 class="h2 section-title">
-              We bring solutions to make life easier for our clients.
-            </h2>
+  .card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 
-            <ul>
+  .card-content {
+    padding: 5px;
+    font-size: 25px;
+  }
 
-              <li class="about-item">
-                <div class="accordion-card expanded" data-accordion>
+  .button {
+    font-size: 20px;
+    padding: 4px 8px;
+    cursor: pointer;
+  }
+</style>
 
-                  <h3 class="card-title">
-                    <button class="accordion-btn" data-accordion-btn>
-                      <ion-icon name="chevron-down-outline" aria-hidden="true" class="down"></ion-icon>
+<div class="about-section">
+  <h1>About Us</h1>
+</div>
 
-                      <spna class="span h5">Professional Design</spna>
-                    </button>
-                  </h3>
+<h2 style="text-align:center">Our Team</h2>
 
-                  <p class="accordion-content">
-                    Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo
-                    sit amet risus. Cras mattis consectetur purus sit amet fermentum. Praesent commodo cursus magna,
-                    vel.
-                  </p>
+<div class="container">
+  {% for one in about_list %}
+  <div class="card">
+    <img src="{{ one.imge.url }}" alt="img test">
+    <div class="card-content">
+      <h2>{{ one.name }}</h2>
+      <p class="title">{{ one.get_job_title_display }}</p>
+      <p>{{ one.email }}</p>
+      <p><button class="button">Contact</button></p>
+    </div>
+  </div>
+  {% endfor %}
+</div>
 
-                </div>
-              </li>
+<!-- باقي التيمبلت زي ما هو -->
 
-              <li class="about-item">
-                <div class="accordion-card" data-accordion>
+<section class="about" aria-labelledby="about-label">
+  <div class="container">
 
-                  <h3 class="card-title">
-                    <button class="accordion-btn" data-accordion-btn>
-                      <ion-icon name="chevron-down-outline" aria-hidden="true" class="down"></ion-icon>
+    <figure class="about-banner">
+      <img src="{% static './assets/images/about-banner.png' %}" width="800" height="580" loading="lazy" alt="about banner"
+        class="w-100">
+    </figure>
 
-                      <spna class="span h5">Top-Notch Support</spna>
-                    </button>
-                  </h3>
+    <div class="about-content">
 
-                  <p class="accordion-content">
-                    Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo
-                    sit amet risus. Cras mattis consectetur purus sit amet fermentum. Praesent commodo cursus magna,
-                    vel.
-                  </p>
+      <p class="section-subtitle" id="about-label">Why Choose Us?</p>
 
-                </div>
-              </li>
+      <h2 class="h2 section-title">
+        We bring solutions to make life easier for our clients.
+      </h2>
 
-              <li class="about-item">
-                <div class="accordion-card" data-accordion>
+      <ul>
 
-                  <h3 class="card-title">
-                    <button class="accordion-btn" data-accordion-btn>
-                      <ion-icon name="chevron-down-outline" aria-hidden="true" class="down"></ion-icon>
+        <li class="about-item">
+          <div class="accordion-card expanded" data-accordion>
 
-                      <spna class="span h5">Exclusive Assets</spna>
-                    </button>
-                  </h3>
+            <h3 class="card-title">
+              <button class="accordion-btn" data-accordion-btn>
+                <ion-icon name="chevron-down-outline" aria-hidden="true" class="down"></ion-icon>
 
-                  <p class="accordion-content">
-                    Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo
-                    sit amet risus. Cras mattis consectetur purus sit amet fermentum. Praesent commodo cursus magna,
-                    vel.
-                  </p>
+                <spna class="span h5">Professional Design</spna>
+              </button>
+            </h3>
 
-                </div>
-              </li>
-
-            </ul>
+            <p class="accordion-content">
+              Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo
+              sit amet risus. Cras mattis consectetur purus sit amet fermentum. Praesent commodo cursus magna,
+              vel.
+            </p>
 
           </div>
+        </li>
 
-        </div>
-      </section>
+        <li class="about-item">
+          <div class="accordion-card" data-accordion>
+
+            <h3 class="card-title">
+              <button class="accordion-btn" data-accordion-btn>
+                <ion-icon name="chevron-down-outline" aria-hidden="true" class="down"></ion-icon>
+
+                <spna class="span h5">Top-Notch Support</spna>
+              </button>
+            </h3>
+
+            <p class="accordion-content">
+              Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo
+              sit amet risus. Cras mattis consectetur purus sit amet fermentum. Praesent commodo cursus magna,
+              vel.
+            </p>
+
+          </div>
+        </li>
+
+        <li class="about-item">
+          <div class="accordion-card" data-accordion>
+
+            <h3 class="card-title">
+              <button class="accordion-btn" data-accordion-btn>
+                <ion-icon name="chevron-down-outline" aria-hidden="true" class="down"></ion-icon>
+
+                <spna class="span h5">Exclusive Assets</spna>
+              </button>
+            </h3>
+
+            <p class="accordion-content">
+              Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo
+              sit amet risus. Cras mattis consectetur purus sit amet fermentum. Praesent commodo cursus magna,
+              vel.
+            </p>
+
+          </div>
+        </li>
+
+      </ul>
+
+    </div>
+
+  </div>
+</section>
 
 {% endblock body %}

@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from django.core.paginator import Paginator
+
 from django.views.generic import DetailView
 from .models import Coaches
 
@@ -6,9 +8,18 @@ from .models import Coaches
 
 
 def coaches_list(request):
-    coaches = Coaches.objects.all()
+    coaches_list = Coaches.objects.all()
 
-    return render(request, 'coaches/coaches_list.html', {'coaches': coaches})
+     # pagination
+    paginator = Paginator(coaches_list, 6) 
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    
+
+
+    return render(request, 'coaches/coaches_list.html', { 'coaches': page_obj,
+        'page_obj': page_obj,
+        'is_paginated': page_obj.has_other_pages(),})
 
 
 

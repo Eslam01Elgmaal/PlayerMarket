@@ -7,28 +7,98 @@
 {% block body %}
 
 
+<style>
+  .coache_card {
+    padding-top: 100px ;
+    margin-bottom: 100px;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
 
-    <!-- slider -->
-    <div style="height: calc(100vh - 464px); min-height: 500px">
-    <div id="carousel-wrapper" style="width: 100%; margin-top: 160px; margin-bottom: 50px">
-      <div id="menu">
-          <div id="current-option">
-            <span id="current-option-text1" data-previous-text="" data-next-text=""></span>
-            <span id="current-option-text2" data-previous-text="" data-next-text=""></span>
-          </div>
-          <button id="previous-option"></button>
-          <button id="next-option"></button>
+  }
+  .crd2{
+    width: 400px;
+    height: 500px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+    text-align: left;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+  }
+
+  .coache_card img{
+    width: 100%;
+    height: 60%;
+    object-fit: cover;
+
+  }
+
+  .crd5 {
+    width: 100%;
+    text-align: left;
+    padding: 10px 15px;
+  }
+
+</style>
+
+
+<div class="coache_card">
+  {% for coach in coaches %}
+    <div class="crd2">
+      <img src="{{ coach.imge.url }}" alt="coach_imge">
+      <div class="crd5" style="margin-top:30px;">
+        <h2>{{ coach.name }}</h2>
+        <h5 class="card-title" style="margin-top:20px;">{{ coach.get_job_title_display }}</h5>
+
+        <a href="{{ coach.get_absolute_url }}" class="button" style="margin-top:40px;">Go To Coach</a>
       </div>
-      <div id="image"></div>
-      
     </div>
-    <div class="players">    <ul class="player" ><li> <a href="Jurgen Klopp.html" class="btn"><h5>Jurgen klopp</h5></a></li>
-      <li><a href="carlo ancelotti.html" class="btn"><h5>Carlo</h5></a></li>
-      <li><a href="Pep Guardiola.html" class="btn"><h5>Guardiola</h5></a></li>
-      <li><a href="José Mourinho.html" class="btn"><h5>Jose Mourinho</h5></a></li>
-    </ul>
-  </div>
-    </div>
+  {% endfor %}
+</div>
+
+
+
+
+    {% if is_paginated %}
+        <nav aria-label="Page navigation">
+        <ul class="pagination pagination-lg d-flex justify-content-center">
+
+            {# Previous page number #}
+            {% if page_obj.has_previous %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ page_obj.previous_page_number }}">{{ page_obj.previous_page_number }}</a>
+            </li>
+            {% endif %}
+
+            {# Current page (highlighted) #}
+            <li class="page-item active" aria-current="page">
+            <span class="page-link">
+                {{ page_obj.number }}
+                <span class="sr-only">(current)</span>
+            </span>
+            </li>
+
+            {# Next page number #}
+            {% if page_obj.has_next %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ page_obj.next_page_number }}">{{ page_obj.next_page_number }}</a>
+            </li>
+            {% endif %}
+
+        </ul>
+        </nav>
+{% endif %}
+
+
+
+
+
 
 
 

@@ -1,3 +1,4 @@
+from django.views.generic import ListView
 from django.db import models
 
 # Create your models here.

@@ -6,20 +6,26 @@
 {% load static %}
 {% block body %}
 
+<section class="about" style="color: white; background-color: #171a1c; height: 100vh;">
+  <div class="main" style="display: flex; height: 100%;">
 
-    <section class="about">
-        <div class="main">
-            <img src="img/Jorgen klopp.jpg" alt="">
-            <div class="about-text">
-                <h1 class="Car">Jurgen Klopp</h1>
-                <h5 class="car2">Football Manager</h5>
-                <p class="car3"> Klopp spent most of his playing career at Mainz . He was initially deployed as a striker, but was later moved to defence. Upon retiring in 2001, Klopp became the club's manager, and secured Bundesliga promotion in 2004. After suffering relegation in the 2006–07 season and unable to achieve promotion, Klopp resigned in 2008 as the club's longest-serving manager. He then became manager of Borussia Dortmund, guiding them to the Bundesliga title in 2010–11, before winning Dortmund's first-ever domestic double during a record-breaking season.[note 1] Klopp also guided Dortmund to a runner-up finish in the 2012–13 UEFA Champions League before leaving in 2015 as their longest-serving manager.</p>
-                <a href="file:///G:Eslam/مشروع التخرج عملي/home.html" class="btn1">Back To Home</a>
-            </div>
-            
-        </div>
-    </section>
+    <!-- الجزء الشمال - الصورة -->
+    <div style="flex: 1; display: flex; justify-content: center; align-items: center;">
+      <img src="{{ coach.imge.url }}" alt="coach image" style="width: 500px; height: 500px; object-fit: cover; border-radius: 10%;">
+    </div>
 
+    <!-- الجزء اليمين - النص -->
+    <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 40px;">
+      <div class="about-text">
+        <h1 class="Car" style="color: #B3C8CF;">{{ coach.name }}</h1>
+        <h5 class="car2" style="color: aqua;">{{ coach.get_job_title_display }}</h5>
+        <p class="car3" style="color: #B3C8CF;">{{ coach.Descraption }}</p>
+        <a href="{% url 'coaches:coaches_list' %}" class="button">Back To Home</a>
+      </div>
+    </div>
+
+  </div>
+</section>
 
 
 

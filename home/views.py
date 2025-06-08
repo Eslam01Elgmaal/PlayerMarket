@@ -20,5 +20,5 @@ class HomeView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['why_list'] = Why.objects.all()  # تضيف why في السياق
+        context['why_list'] = Why.objects.all() 
         return context
