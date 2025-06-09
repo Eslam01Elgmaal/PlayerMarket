@@ -3,15 +3,7 @@
 {% block title %}Contact Us{% endblock %}
 {% load static %}
 <!-- Leaflet CSS -->
-<link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css"
-/>
 
-<!-- Leaflet JS -->
-<script
-  src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"
-></script>
 
 
 {% block body %}
@@ -35,7 +27,7 @@
 
 
         <div class="footer-column">
-            <div class="tile-content">
+            <div class="tile-content" style=" padding">
                 <h1>Meet Us</h1>
                 <div class="contact-row">
                     <img src=""><span class="tile-field">+466723723666</span>
@@ -83,18 +75,17 @@
 
 
 <script>
-  // إحداثيات المكان (مثلاً 6 أكتوبر - الجيزة)
-  var map = L.map('map').setView([29.9533, 30.9210], 13);
+  document.addEventListener('DOMContentLoaded', function () {
+    var map = L.map('map').setView([29.9533, 30.9210], 13);
 
-  // تحميل طبقة الخريطة
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '© OpenStreetMap contributors'
-  }).addTo(map);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap contributors'
+    }).addTo(map);
 
-  // إضافة marker على الموقع
-  L.marker([29.9533, 30.9210]).addTo(map)
-      .bindPopup('نحن هنا!<br>6 أكتوبر، الجيزة')
-      .openPopup();
+    L.marker([29.9533, 30.9210]).addTo(map)
+        .bindPopup('نحن هنا!<br>6 أكتوبر، الجيزة')
+        .openPopup();
+  });
 </script>
 
 

@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'home',
     'supplies',
     'contact',
+    'accounts',
 
     'rest_framework',
 ]

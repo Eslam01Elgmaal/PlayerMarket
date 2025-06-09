@@ -27,7 +27,7 @@ class TShirt(models.Model):
 
     def generate_unique_code(self):
         while True:
-            code = str(random.randint(0, 9999)).zfill(4)  # كود عشوائي من 4 أرقام أو أقل
+            code = str(random.randint(0, 9999)).zfill(4)  
             if not TShirt.objects.filter(code=code).exists():
                 return code
 

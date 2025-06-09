@@ -23,6 +23,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css" />
+
+    <!-- Leaflet JS -->
+
 
     <script src="{% static 'javascript/html2canvas.hertzen.com_dist_html2canvas.min.js' %}"></script>
     <script src="{% static 'javascript/consts.js' %}"></script>
@@ -148,9 +152,9 @@
                 </ul>
 
                 <div class="wrapper">
-                    <a href="mailto:any@email.com" class="contact-link">any@email.com</a>
+                    <a href="{{user.profile.facebook}}" class="contact-link">{{user.profile.email}}</a>
 
-                    <a href="tel:010000000000000" class="contact-link">0100007770000</a>
+                    <a href="{{user.profile.phone_number}}" class="contact-link">{{user.profile.phone_number}}</a>
                 </div>
                 <!-- social madia in mobile hamburger menu -->
                 <ul class="social-list">
@@ -184,7 +188,7 @@
 
             </nav>
             <!-- shop button -->
-            <a href="Shop.html" class="btn btn-primary">shop</a>
+            <a href="{% url 'tshirt:tshirt_list' %}" class="btn btn-primary">shop</a>
 
             <button class="nav-open-btn" aria-label="open menu" data-nav-toggler>
                 <ion-icon name="menu-outline" aria-hidden="true"></ion-icon>
@@ -212,41 +216,36 @@
             <div class="footer-brand">
 
                 <a href="#" class="logo">
-                    <img src="{% static './assets/images/logo-light.png' %}" width="74" height="24" alt="pass & shot home">
+                    <img src="{{ user.profile.imge.url}}" width="74" height="24"
+                        alt="pass & shot home">
                 </a>
 
                 <p class="footer-text">
-                    &copy; pass & shot. <br> All rights reserved.
+                    &copy; pass & shot. <br> {{ user.profile.descrabtion}}
                 </p>
 
                 <ul class="social-list">
 
                     <li>
-                        <a href="#" class="social-link">
+                        <a href="{{user.profile.facebook}}" class="social-link">
                             <ion-icon name="logo-facebook"></ion-icon>
                         </a>
                     </li>
 
                     <li>
-                        <a href="#" class="social-link">
+                        <a href="{{user.profile.x}}" class="social-link">
                             <ion-icon name="logo-twitter"></ion-icon>
                         </a>
                     </li>
 
                     <li>
-                        <a href="#" class="social-link">
-                            <ion-icon name="logo-dribbble"></ion-icon>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#" class="social-link">
+                        <a href="{{user.profile.instgram}}" class="social-link">
                             <ion-icon name="logo-instagram"></ion-icon>
                         </a>
                     </li>
 
                     <li>
-                        <a href="#" class="social-link">
+                        <a href="{{user.profile.youtube}}" class="social-link">
                             <ion-icon name="logo-youtube"></ion-icon>
                         </a>
                     </li>
@@ -263,16 +262,16 @@
 
                 <li>
                     <address class="footer-text">
-                        4th St. 6th of October City, giza, Egypt
+                        {{ user.profile.addris}}
                     </address>
                 </li>
 
                 <li>
-                    <a href="mailto:any@email.com" class="footer-link">any@email.com</a>
+                    <a href="mailto:any@email.com" class="footer-link">{{user.profile.email}}</a>
                 </li>
 
                 <li>
-                    <a href="tel:010000000000000" class="footer-link">010000000000000</a>
+                    <a href="tel:010000000000000" class="footer-link">{{user.profile.phone_number}}</a>
                 </li>
 
             </ul>
@@ -330,6 +329,8 @@
     <!-- 
   - ionicon
 -->
+
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 

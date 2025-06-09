@@ -6,7 +6,7 @@ from .models import TShirt
 def tshirt_list(request):
     tshirt = TShirt.objects.all()
 
-    return render(request, 'tshirt/tshirt_list.html', {'tshirt': tshirt})
+    return render(request, 'tshirt/tshirt_list.html', {'tshirts': tshirt})
 
 
 

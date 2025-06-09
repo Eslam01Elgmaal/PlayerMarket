@@ -1,22 +1,64 @@
- 
 {% extends "base.html" %}
 
 {% block title %} Supplies {% endblock %}
 
 {% load static %}
-{% block body %}
- 
- <div class="sasa">
-    <div class="gallery">
-        <div class="content3">
-            <img class="alahly" src="img/Alahly.jpg" >
-            <h3 class="koo">Alahly</h3>
-            <h5>Code</h5>
-            <h6>0027</h6>
-            <a href="T-alahly.html" class="btn"> Show </a>
-        </div>
-    </div>
-  </div>
 
+{% block body %}
+
+<style>
+  .sasa {
+    padding-top: 100px;
+    margin-bottom: 100px;
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 أعمدة بنفس العرض */
+    gap: 15px; /* المسافة بين الكروت */
+    justify-items: center; /* لو عايز العناصر في الوسط داخل الأعمدة */
+  }
+  .gallery {
+    width: 100%;  /* خلي الكرت يعبي العمود */
+    max-width: 300px; /* تحديد أقصى عرض للكرت */
+    height: 500px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .sasa .alahly {
+    width: 100%;
+    height: 60%;
+    object-fit: cover;
+  }
+
+  .content3 {
+    width: 100%;
+    text-align: center;
+    padding: 10px 15px;
+    font-size: 20px;
+  }
+
+</style>
+
+<div class="sasa">
+    {% for tshirt in tshirts %}
+      <div class="gallery">
+          <div class="content3">
+              <img class="alahly" src="{{ tshirt.imge.url }}" alt="{{ tshirt.name }}">
+              <h3 class="koo" style="font-size:20px;">{{ tshirt.name }}</h3>
+              <h5 style="font-size:20px;">Code</h5>
+              <h6 style="font-size:20px;">{{ tshirt.code }}</h6>
+              <a href="{% url 'tshirt:tshirt_detail' tshirt.pk %}" class="button" style="margin-top:20px;"> Show</a>
+          </div>
+      </div>
+    {% empty %}
+      <p>لا توجد تيشرتات حالياً.</p>
+    {% endfor %}
+</div>
 
 {% endblock body %}
