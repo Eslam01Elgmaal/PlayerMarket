@@ -66,7 +66,7 @@ class Players(models.Model):
             self.Physical * 0.1
         )
 
-        # توليد slug لو مش موجود
+        
         if not self.slug:
             base_slug = slugify(self.name)
             slug = base_slug
@@ -76,7 +76,7 @@ class Players(models.Model):
                 counter += 1
             self.slug = slug
 
-        # حفظ البيانات مرة واحدة فقط
+        
         super().save(*args, **kwargs)
 
 
@@ -90,16 +90,16 @@ class Players(models.Model):
 
     last_club_name = models.CharField(max_length=50)
 
-    # هنا هضيف المتغيرات المطلوبة
+    
     date_from_year = models.PositiveIntegerField(
         validators=[
-            MinValueValidator(1990),  # لا يقبل السنة قبل 1990
+            MinValueValidator(1990),  
         ]
     )
 
     date_to_year = models.PositiveIntegerField(
         validators=[
-            MinValueValidator(1990),  # لا يقبل السنة قبل 1990
+            MinValueValidator(1990),  
         ]
     )
 
@@ -117,7 +117,7 @@ class Players(models.Model):
 
 
     def clean(self):
-        """تطبيق الفاليديشن عند حفظ الموديل"""
+        
         if self.date_to_year < self.date_from_year:
             raise ValidationError({"date_to_year": "سنة النهاية يجب أن تكون أكبر أو مساوية لسنة البداية."})
 
