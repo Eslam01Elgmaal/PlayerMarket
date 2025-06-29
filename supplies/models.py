@@ -33,3 +33,12 @@ class TShirt(models.Model):
 
     def __str__(self):
         return self.name
+
+class Purchase(models.Model):
+    tshirt = models.ForeignKey(TShirt, on_delete=models.CASCADE)
+    size = models.CharField(max_length=10)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+
+    def __str__(self):
+        return f"{self.tshirt.name} - {self.size}"

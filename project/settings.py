@@ -1,4 +1,8 @@
 import os
+from django.contrib.messages import constants as messages
+
+MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
+
 
 
 """
@@ -49,6 +53,8 @@ INSTALLED_APPS = [
     'accounts',
 
     'rest_framework',
+
+
 ]
 
 MIDDLEWARE = [

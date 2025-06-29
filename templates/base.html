@@ -201,6 +201,13 @@
 
     <!-- (#HEADER) -->
 
+{% if messages %}
+  <ul class="messages">
+    {% for message in messages %}
+      <li class="alert-success">{{ message }}</li>
+    {% endfor %}
+  </ul>
+{% endif %}
 
 
     {% block body %}

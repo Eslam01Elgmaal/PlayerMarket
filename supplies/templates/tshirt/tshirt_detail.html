@@ -1,61 +1,177 @@
-
- 
 {% extends "base.html" %}
 
 {% block title %} Supplies {% endblock %}
 
 {% load static %}
 {% block body %}
- 
 
+<style>
+    .Shirt {
+        padding: 50px 0;
+        display: flex;
+        justify-content: center;
+        background-color: #f8f9fa;
+    }
 
+    .Supplies {
+        display: flex;
+        gap: 5px;
+        background-color: white;
+        padding: 20px;
+        margin-top: 70px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
 
+    .imge1 img {
+        width: 350px;
+        height: 400px;
+        object-fit: cover;
+        border-radius: 8px;
+    }
 
-    
+    .details {
+        width: 350px;
+        height: 400px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
 
-    <div class="Shirt">
-        <div class="Supplies">
-            <div class="imge1">
-                <img src="img/barclona.jpg" >
-            </div>
-            <div class="details">
-                <h1>Barcelona CF</h1>
-                <h2>200EGP</h2>
-                <h3>Code: 0059</h3>
-                <p>To Get The Product, Please Contact Us On WhatsApp With The Product Code And Address,
-                    
-                </p>
-                
-                <form>
+    .details h1,
+    .details h2,
+    .details h3,
+    .details p {
+        margin: 5px 0;
+    }
+
+    .size-select {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        margin-top: 30px;
+        flex-wrap: wrap;
+    }
+
+    .size-select label {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        background-color: #eee;
+        padding: 4px 8px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .size-select input[type="radio"] {
+        display: none;
+    }
+
+    .size-select input[type="radio"]:checked + span {
+        background-color: #007bff;
+        color: white;
+        border-radius: 4px;
+        padding: 4px 8px;
+    }
+
+    .size-select span {
+        font-weight: bold;
+    }
+
+    .button {
+        background-color: #007bff;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 8px;
+        text-decoration: none;
+        display: inline-block;
+        transition: 0.3s ease;
+        border: none;
+        cursor: pointer;
+    }
+
+    .button:hover {
+        background-color: #0056b3;
+    }
+
+    .messages {
+        text-align: center;
+        margin-top: 20px;
+        list-style: none;
+        padding: 0;
+    }
+
+    .alert-success {
+        color: green;
+        font-weight: bold;
+    }
+      .messages {
+    margin: 20px auto;
+    text-align: center;
+    list-style: none;
+    padding: 0;
+  }
+
+  .alert-success {
+    background-color: #d4edda;
+    color: #155724;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    max-width: 400px;
+    margin: auto;
+    box-shadow: 0 0}
+</style>
+
+{% if messages %}
+  <ul class="messages">
+    {% for message in messages %}
+      <li class="alert-success">{{ message }}</li>
+    {% endfor %}
+  </ul>
+{% endif %}
+
+<div class="Shirt">
+    <div class="Supplies">
+        <div class="imge1">
+            <img src="{{ tshirt.imge.url }}" alt="{{ tshirt.name }}">
+        </div>
+        <div class="details">
+            <div>
+                <h1>{{ tshirt.name }}</h1>
+                <h2>{{ tshirt.price }}EGP</h2>
+                <h3>Code: {{ tshirt.code }}</h3>
+                <p>To Get The Product, Please Contact Us On WhatsApp With The Product Code And Address.</p>
+
+                <form method="POST" action="{% url 'tshirt:buy_tshirt' tshirt.pk %}">
+                    {% csrf_token %}
                     <div class="size-select">
                         <p>Size:</p>
                         <label for="small">
-                            <input type="radio" name="size" id="small">
+                            <input type="radio" name="size" value="S" id="small" required>
                             <span>S</span>
                         </label>
-                        <label for="medim">
-                            <input type="radio" name="size" id="medim">
+                        <label for="medium">
+                            <input type="radio" name="size" value="M" id="medium">
                             <span>M</span>
                         </label>
                         <label for="large">
-                            <input type="radio" name="size" id="large">
-                            <span>l</span>
+                            <input type="radio" name="size" value="L" id="large">
+                            <span>L</span>
                         </label>
                         <label for="x-large">
-                            <input type="radio" name="size" id="x-large">
+                            <input type="radio" name="size" value="XL" id="x-large">
                             <span>XL</span>
                         </label>
-
                     </div>
-                    <div class="social">
-                        <a href="https://web.whatsapp.com/"target="_blank"><img src="img/whatsapp_logo_icon_147205.png" alt=""></a>
+
+                    <div class="social" style="margin-top: 25px;">
+                        <button type="submit" class="button">Buy</button>
                     </div>
                 </form>
             </div>
         </div>
-        
     </div>
-
-    
+</div>
 
 {% endblock body %}
