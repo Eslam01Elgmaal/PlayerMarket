@@ -23,11 +23,12 @@ urlpatterns = [
 
     path('admin/', admin.site.urls),
     path('players/', include('players.urls' , namespace='players')),
-    path('', include('home.urls')),
+    path('home/', include('home.urls')),
     path('about/', include('about.urls')),
     path('coaches/', include('coaches.urls')),
     path('contact/', include('contact.urls', namespace='contact')),
     path('supplies/', include('supplies.urls')),
+    path('', include('accounts.urls')),
 
 ]
 
