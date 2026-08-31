@@ -1,0 +1,25 @@
+# Virtual Environment
+.venv/
+venv/
+
+# PyCharm
+.idea/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environment variables / Secrets
+.env
+
+# Local database
+db.sqlite3
+*.sqlite3
+*.db
+
+# Static files collected for production
+staticfiles/
+
+# Local media uploads
+media/
