@@ -5,6 +5,7 @@ from datetime import datetime
 from django.utils.text import slugify
 from django_countries.fields import CountryField
 from django.urls import reverse
+from cloudinary.models import CloudinaryField
 
 
 # Create your models here.
@@ -136,7 +137,13 @@ class Players(models.Model):
     date_to_school = models.IntegerField(null=True, blank=True)
     description_school = models.TextField(max_length=3000, null=True, blank=True)
 
-    video = models.FileField(upload_to='players_videos/', null=True, blank=True)
+    video = CloudinaryField(
+        'video',
+        resource_type='video',
+        folder='players_videos/',
+        blank=True,
+        null=True
+    )
 
 
 
