@@ -16,22 +16,38 @@
       <!-- (- #HERO & slider (frist section in home page) )-->
 
       <section style="margin-top: -30px;">
-        <Video src="{{ home.videoH.url }}"  type="video/mp4" class="home-video" height="100%" loop muted autoplay controls></Video>
+
+        {% if home.videoH %}
+            <video
+                src="{{ home.videoH.url }}"
+                type="video/mp4"
+                class="home-video"
+                height="100%"
+                loop
+                muted
+                autoplay
+                controls>
+            </video>
+        {% endif %}
 
         <div class="container">
 
-          <div class="hero-content" style="position: absolute;
-               top: 550px;">
-            <!-- text image -->
-            <h1 class="h1 hero-title"><img src="{{home.logo.url}}" width="300" height="100"  alt=""> </h1>
+            <div class="hero-content" style="position: absolute; top: 550px;">
 
-            <p class="hero-text"> {{home.descraption }}</p>
+                <!-- text image -->
+                <h1 class="h1 hero-title">
+                    <img src="{{ home.logo.url }}" width="300" height="100" alt="">
+                </h1>
 
-           
+                <p class="hero-text">
+                    {{ home.descraption }}
+                </p>
 
-          </div>
+            </div>
+
         </div>
-      </section>
+
+    </section>
 
       <!-- (- Advantages of the company) -->
 
