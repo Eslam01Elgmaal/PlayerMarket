@@ -1,4 +1,5 @@
 from django.db import models
+from cloudinary.models import CloudinaryField
 
 # Create your models here.
 
@@ -12,7 +13,7 @@ class Home(models.Model):
     logo_black = models.ImageField(upload_to= "home/")
     addres = models.CharField(max_length=120)
     phone_numper = models.CharField(max_length=22)
-    videoH = models.FileField(upload_to='home_videos/', null=True, blank=True)
+    videoH = CloudinaryField('video', resource_type='video' , null=True, blank=True)
     facebook = models.URLField(blank=True, null=True)
     x = models.URLField(blank=True, null=True)
     instagram = models.URLField(blank=True, null=True)
