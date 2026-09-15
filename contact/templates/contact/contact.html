@@ -30,10 +30,10 @@
             <div class="tile-content" style=" padding">
                 <h1>Meet Us</h1>
                 <div class="contact-row">
-                    <img src=""><span class="tile-field">+466723723666</span>
+                    <img src=""><span class="tile-field">{{home.phone_numper}}</span>
                 </div>
                 <div class="contact-row">
-                    <img src=""><span class="tile-field">contact@admin.com</span>
+                    <img src=""><span class="tile-field">{{home.email}}</span>
                 </div>
                 <div class="contact-row">
                     <img src=""><span class="tile-field">4th St. 6th of October City, Giza, Egypt</span>
@@ -78,8 +78,8 @@
   document.addEventListener('DOMContentLoaded', function () {
     var map = L.map('map').setView([29.9533, 30.9210], 13);
 
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '© OpenStreetMap contributors'
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+        attribution: '&copy; OpenStreetMap contributors &copy; CARTO'
     }).addTo(map);
 
     L.marker([29.9533, 30.9210]).addTo(map)
