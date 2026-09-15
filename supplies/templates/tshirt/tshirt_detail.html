@@ -1,61 +1,906 @@
-
- 
 {% extends "base.html" %}
-
-{% block title %} Supplies {% endblock %}
-
 {% load static %}
+
+{% block title %}Supplies{% endblock %}
+
 {% block body %}
- 
+
+<style>
+/* =========================
+   PRODUCT PAGE
+========================= */
+
+.product-page {
+    min-height: 100vh;
+    background: #171a1c;
+    color: white;
+}
+
+.product-main {
+    min-height: 100vh;
+    display: flex;
+}
+
+.product-image-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.product-image {
+    width: 500px;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 10%;
+}
+
+.product-details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 40px;
+}
+
+.product-name {
+    color: #B3C8CF;
+}
+
+.product-price {
+    color: aqua;
+}
+
+.product-code {
+    color: #B3C8CF;
+}
+
+.product-description {
+    color: #B3C8CF;
+}
 
 
+/* =========================
+   ORDER MODAL
+========================= */
+
+#orderModal {
+    display: none;
+
+    position: fixed !important;
+
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+
+    width: 100vw !important;
+    height: 100vh !important;
+
+    z-index: 999999 !important;
+
+    background: rgba(0, 0, 0, 0.72) !important;
+
+    backdrop-filter: blur(9px);
+    -webkit-backdrop-filter: blur(9px);
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    box-sizing: border-box;
+}
 
 
-    
+/* Modal box */
 
-    <div class="Shirt">
-        <div class="Supplies">
-            <div class="imge1">
-                <img src="img/barclona.jpg" >
-            </div>
-            <div class="details">
-                <h1>Barcelona CF</h1>
-                <h2>200EGP</h2>
-                <h3>Code: 0059</h3>
-                <p>To Get The Product, Please Contact Us On WhatsApp With The Product Code And Address,
-                    
-                </p>
-                
-                <form>
-                    <div class="size-select">
-                        <p>Size:</p>
-                        <label for="small">
-                            <input type="radio" name="size" id="small">
-                            <span>S</span>
-                        </label>
-                        <label for="medim">
-                            <input type="radio" name="size" id="medim">
-                            <span>M</span>
-                        </label>
-                        <label for="large">
-                            <input type="radio" name="size" id="large">
-                            <span>l</span>
-                        </label>
-                        <label for="x-large">
-                            <input type="radio" name="size" id="x-large">
-                            <span>XL</span>
-                        </label>
+#orderModal .order-modal-content {
+    position: relative;
 
-                    </div>
-                    <div class="social">
-                        <a href="https://web.whatsapp.com/"target="_blank"><img src="img/whatsapp_logo_icon_147205.png" alt=""></a>
-                    </div>
-                </form>
-            </div>
+    width: 100%;
+    max-width: 520px;
+
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    background: #202427;
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    border-radius: 18px;
+
+    padding: 35px;
+
+    box-sizing: border-box;
+
+    box-shadow:
+        0 25px 70px rgba(0, 0, 0, 0.7);
+
+    animation: modalAppear 0.25s ease;
+}
+
+
+/* Animation */
+
+@keyframes modalAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+
+}
+
+
+/* Close button */
+
+#orderModal .close-modal {
+
+    position: absolute;
+
+    top: 12px;
+    right: 15px;
+
+    width: 35px;
+    height: 35px;
+
+    border: none;
+
+    background: transparent;
+
+    color: #999;
+
+    font-size: 30px;
+
+    line-height: 30px;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+#orderModal .close-modal:hover {
+    color: white;
+}
+
+
+/* Title */
+
+#orderModal h2 {
+
+    color: #B3C8CF;
+
+    text-align: center;
+
+    margin: 0 0 8px 0;
+
+}
+
+
+/* Subtitle */
+
+#orderModal .order-subtitle {
+
+    text-align: center;
+
+    color: #888;
+
+    font-size: 14px;
+
+    margin-bottom: 25px;
+
+}
+
+
+/* Product information */
+
+#orderModal .selected-product {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding: 14px 16px;
+
+    margin-bottom: 22px;
+
+    background: #171a1c;
+
+    border-radius: 9px;
+
+    color: #B3C8CF;
+}
+
+#orderModal .selected-product strong {
+    color: aqua;
+}
+
+
+/* Sizes */
+
+#orderModal .modal-sizes {
+    margin-bottom: 20px;
+}
+
+#orderModal .modal-sizes > label {
+
+    display: block;
+
+    color: #B3C8CF;
+
+    margin-bottom: 10px;
+
+    font-size: 14px;
+}
+
+
+#orderModal .modal-size-options {
+
+    display: flex;
+
+    gap: 10px;
+}
+
+
+#orderModal .modal-size-options label {
+    cursor: pointer;
+}
+
+
+#orderModal .modal-size-options input {
+    display: none;
+}
+
+
+#orderModal .modal-size-options span {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-width: 50px;
+
+    height: 42px;
+
+    padding: 0 14px;
+
+    box-sizing: border-box;
+
+    background: #171a1c;
+
+    border: 1px solid #444;
+
+    border-radius: 8px;
+
+    color: #ccc;
+
+    transition: 0.2s;
+}
+
+
+#orderModal .modal-size-options input:checked + span {
+
+    border-color: aqua;
+
+    color: aqua;
+
+    background: rgba(0, 255, 255, 0.08);
+
+}
+
+
+/* Inputs */
+
+#orderModal input[type="text"],
+#orderModal input[type="email"],
+#orderModal textarea {
+
+    width: 100%;
+
+    box-sizing: border-box;
+
+    padding: 13px 14px;
+
+    margin-bottom: 14px;
+
+    background: #171a1c;
+
+    border: 1px solid #3b3f42;
+
+    border-radius: 8px;
+
+    color: white;
+
+    font-family: inherit;
+
+    outline: none;
+
+    transition: 0.2s;
+}
+
+
+#orderModal input:focus,
+#orderModal textarea:focus {
+
+    border-color: aqua;
+
+    box-shadow:
+        0 0 0 2px rgba(0, 255, 255, 0.08);
+
+}
+
+
+#orderModal input::placeholder,
+#orderModal textarea::placeholder {
+
+    color: #777;
+
+}
+
+
+/* Submit button */
+
+#orderModal .order-submit {
+
+    width: 100%;
+
+    margin-top: 5px;
+
+    cursor: pointer;
+
+}
+
+
+/* Error */
+
+#orderModal #orderError {
+
+    color: #ff5555;
+
+    text-align: center;
+
+    margin-top: 12px;
+
+    font-size: 14px;
+
+}
+
+
+/* Success */
+
+#orderModal .booking-success {
+
+    text-align: center;
+
+    padding: 30px 10px;
+
+}
+
+#orderModal .booking-success h2 {
+    color: aqua;
+}
+
+#orderModal .booking-success p {
+    color: #B3C8CF;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 900px) {
+
+    .product-main {
+        flex-direction: column;
+
+        padding: 40px 20px;
+    }
+
+    .product-image {
+        width: 350px;
+        height: 350px;
+    }
+
+    .product-details {
+        padding: 30px 10px;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    #orderModal {
+        padding: 15px;
+    }
+
+    #orderModal .order-modal-content {
+
+        max-width: 100%;
+
+        padding: 28px 20px;
+
+        border-radius: 15px;
+
+    }
+
+    #orderModal h2 {
+        font-size: 23px;
+    }
+
+}
+</style>
+
+
+<!-- =========================
+     PRODUCT SECTION
+========================= -->
+
+<section class="product-page">
+
+    <div class="product-main">
+
+        <!-- Product Image -->
+
+        <div class="product-image-container">
+
+            <img
+                src="{{ tshirt.imge.url }}"
+                alt="{{ tshirt.name }}"
+                class="product-image"
+            >
+
         </div>
-        
+
+
+        <!-- Product Details -->
+
+        <div class="product-details">
+
+            <div class="about-text">
+
+                <h1 class="product-name">
+                    {{ tshirt.name }}
+                </h1>
+
+                <h2 class="product-price">
+                    {{ tshirt.price }} EGP
+                </h2>
+
+                <h3 class="product-code">
+                    Code: {{ tshirt.code }}
+                </h3>
+
+                <p class="product-description">
+                    To Get The Product, Please Contact Us On WhatsApp With
+                    The Product Code And Address.
+                </p>
+
+
+                <!-- Available Sizes -->
+
+                <div class="size-select">
+
+                    <p style="color: white;">
+                        Available Sizes:
+                    </p>
+
+                    {% for size in tshirt.size.all %}
+
+                        <label for="size-{{ size.id }}">
+
+                            <input
+                                type="radio"
+                                name="product_size"
+                                id="size-{{ size.id }}"
+                                value="{{ size.id }}"
+                            >
+
+                            <span>
+                                {{ size.name }}
+                            </span>
+
+                        </label>
+
+                    {% endfor %}
+
+                </div>
+
+
+                <!-- Buttons -->
+
+                <div style="margin-top: 25px;">
+
+                    <button
+                        type="button"
+                        class="button"
+                        onclick="openOrderModal()">
+
+                        Order Now
+
+                    </button>
+
+
+                    <a
+                        href="{% url 'tshirt:tshirt_list' %}"
+                        class="button"
+                        style="margin-top: 25px;">
+
+                        Back To Home
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
     </div>
 
-    
+</section>
+
+
+<!-- =========================
+     ORDER MODAL
+========================= -->
+
+<div id="orderModal">
+
+    <div class="order-modal-content">
+
+        <!-- Close -->
+
+        <button
+            type="button"
+            class="close-modal"
+            onclick="closeOrderModal()">
+
+            &times;
+
+        </button>
+
+
+        <div id="orderFormContainer">
+
+            <h2>
+                Order {{ tshirt.name }}
+            </h2>
+
+
+            <p class="order-subtitle">
+
+                Please enter your information
+                to complete your booking.
+
+            </p>
+
+
+            <form id="orderForm">
+
+                {% csrf_token %}
+
+
+                <!-- Product -->
+
+                <div class="selected-product">
+
+                    <span>
+                        {{ tshirt.name }}
+                    </span>
+
+                    <strong>
+                        {{ tshirt.price }} EGP
+                    </strong>
+
+                </div>
+
+
+                <!-- Size -->
+
+                <div class="modal-sizes">
+
+                    <label>
+                        Select Size
+                    </label>
+
+
+                    <div class="modal-size-options">
+
+                        {% for size in tshirt.size.all %}
+
+                            <label>
+
+                                <input
+                                    type="radio"
+                                    name="size"
+                                    value="{{ size.id }}"
+                                    required
+                                >
+
+                                <span>
+                                    {{ size.name }}
+                                </span>
+
+                            </label>
+
+                        {% endfor %}
+
+                    </div>
+
+                </div>
+
+
+                <!-- Name -->
+
+                <input
+                    type="text"
+                    name="customer_name"
+                    placeholder="Your Name"
+                    required
+                >
+
+
+                <!-- Email -->
+
+                <input
+                    type="email"
+                    name="customer_email"
+                    placeholder="Your Email"
+                    required
+                >
+
+
+                <!-- Phone -->
+
+                <input
+                    type="text"
+                    name="customer_phone"
+                    placeholder="Your Phone"
+                    required
+                >
+
+
+                <!-- Address -->
+
+                <textarea
+                    name="address"
+                    placeholder="Your Address"
+                    rows="3"
+                    required
+                ></textarea>
+
+
+                <!-- Submit -->
+
+                <button
+                    type="submit"
+                    class="button order-submit">
+
+                    Confirm Booking
+
+                </button>
+
+
+                <p id="orderError"></p>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* =========================
+   OPEN MODAL
+========================= */
+
+function openOrderModal() {
+
+    const selectedSize = document.querySelector(
+        'input[name="product_size"]:checked'
+    );
+
+
+    if (!selectedSize) {
+
+        alert("Please select a size first.");
+
+        return;
+    }
+
+
+    const modal =
+        document.getElementById("orderModal");
+
+
+    modal.style.display = "flex";
+
+
+    document.body.style.overflow = "hidden";
+}
+
+
+/* =========================
+   CLOSE MODAL
+========================= */
+
+function closeOrderModal() {
+
+    const modal =
+        document.getElementById("orderModal");
+
+
+    modal.style.display = "none";
+
+
+    document.body.style.overflow = "";
+}
+
+
+/* =========================
+   MODAL EVENTS
+========================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        const modal =
+            document.getElementById("orderModal");
+
+
+        const form =
+            document.getElementById("orderForm");
+
+
+        /* Click outside */
+
+        modal.addEventListener(
+            "click",
+            function (event) {
+
+                if (event.target === modal) {
+
+                    closeOrderModal();
+
+                }
+
+            }
+        );
+
+
+        /* Escape */
+
+        document.addEventListener(
+            "keydown",
+            function (event) {
+
+                if (event.key === "Escape") {
+
+                    closeOrderModal();
+
+                }
+
+            }
+        );
+
+
+        /* =========================
+           SUBMIT ORDER
+        ========================= */
+
+        form.addEventListener(
+            "submit",
+            function (event) {
+
+                event.preventDefault();
+
+
+                const errorBox =
+                    document.getElementById(
+                        "orderError"
+                    );
+
+
+                errorBox.textContent = "";
+
+
+                fetch(
+                    "{% url 'tshirt:create_order' tshirt.id %}",
+                    {
+                        method: "POST",
+
+                        body: new FormData(form),
+
+                        headers: {
+                            "X-Requested-With":
+                                "XMLHttpRequest"
+                        }
+                    }
+                )
+
+                .then(function (response) {
+
+                    return response.json();
+
+                })
+
+                .then(function (data) {
+
+                    if (data.success) {
+
+                        document.getElementById(
+                            "orderFormContainer"
+                        ).innerHTML = `
+
+                            <div class="booking-success">
+
+                                <h2>
+                                    Booking Confirmed!
+                                </h2>
+
+                                <p>
+                                    Your order has been
+                                    received successfully.
+                                </p>
+
+                                <button
+                                    type="button"
+                                    class="button"
+                                    onclick="closeOrderModal()">
+
+                                    Close
+
+                                </button>
+
+                            </div>
+
+                        `;
+
+                    }
+
+                    else {
+
+                        errorBox.textContent =
+                            data.error ||
+                            "Something went wrong.";
+
+                    }
+
+                })
+
+                .catch(function (error) {
+
+                    console.error(error);
+
+                    errorBox.textContent =
+                        "Something went wrong. Please try again.";
+
+                });
+
+            }
+        );
+
+    }
+);
+
+</script>
 
 {% endblock body %}
