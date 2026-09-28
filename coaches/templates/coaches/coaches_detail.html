@@ -1,33 +1,5 @@
-
 {% extends "base.html" %}
-
-{% block title %} Coach {% endblock %}
-
-{% load static %}
+{% block title %}{{ coach.name }} | PlayerMarket{% endblock %}
 {% block body %}
-
-<section class="about" style="color: white; background-color: #171a1c; height: 100vh;">
-  <div class="main" style="display: flex; height: 100%;">
-
-    <!-- الجزء الشمال - الصورة -->
-    <div style="flex: 1; display: flex; justify-content: center; align-items: center;">
-      <img src="{{ coach.imge.url }}" alt="coach image" style="width: 500px; height: 500px; object-fit: cover; border-radius: 10%;">
-    </div>
-
-    <!-- الجزء اليمين - النص -->
-    <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 40px;">
-      <div class="about-text">
-        <h1 class="Car" style="color: #B3C8CF;">{{ coach.name }}</h1>
-        <h5 class="car2" style="color: aqua;">{{ coach.get_job_title_display }}</h5>
-        <p class="car3" style="color: #B3C8CF;">{{ coach.Descraption }}</p>
-        <a href="{% url 'coaches:coaches_list' %}" class="button">Back To Home</a>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-
-
-
+<section class="coach-profile section-space"><div class="site-shell"><a class="back-link" href="{% url 'coaches:coaches_list' %}">← All coaches</a><div class="coach-profile-grid"><div class="coach-profile-image"><img src="{{ coach.imge.url }}" alt="{{ coach.name }}"></div><div><p class="eyebrow">{{ coach.get_job_title_display }}</p><h1>{{ coach.name }}</h1><p class="coach-bio">{{ coach.Descraption }}</p><a href="{% url 'contact:contact' %}" class="button button-primary">Get in touch <span>→</span></a></div></div></div></section>
 {% endblock body %}

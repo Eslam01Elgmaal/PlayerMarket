@@ -1,303 +1,49 @@
 {% load static %}
-
-<!DOCTYPE html>
-<html>
-
+<!doctype html>
+<html lang="en">
 <head>
-    <title>{% block title %}My Site{% endblock %}</title>
-
-    <meta charset="UTF-8">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Saira+Semi+Condensed:300,400,700" />
-
-    <link rel="stylesheet" href="{% static 'css/pagination.css' %}">
-    <link rel="stylesheet" href="{% static 'css/w3.css' %}">
-    <link rel="stylesheet" href="{% static 'static/styles.css' %}">
-    <link rel="stylesheet" href="{% static 'css/cardty.css' %}">
-
-
-
-    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css" />
-
-    <!-- Leaflet JS -->
-
-
-    <script src="{% static 'javascript/html2canvas.hertzen.com_dist_html2canvas.min.js' %}"></script>
-    <script src="{% static 'javascript/consts.js' %}"></script>
-
-
-    {# <script src="{% static 'player.js' %}"></script> #}
-
-
-    <script src="{% static 'javascript/render.js' %}"></script>
-
-    <style>
-        html,
-        body,
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
-            font-family: "Roboto", sans-serif
-        }
-    </style>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700&display=swap" rel="stylesheet">
-
-    <!-- 
-  - custom css link
--->
-
-    <link rel="stylesheet" href="{% static './assets/css/style.css' %}">
-    <link rel="stylesheet" href="{% static 'assets/css/AboutUs.css' %}">
-    <link rel="stylesheet" href="{% static 'assets/css/AboutUs.css' %}">
-
-    <!-- 
-  - favicon
--->
-    <link rel="shortcut icon" href="{% static './favicon.svg' %}" type="image/svg+xml">
-
-    <!-- 
-  - google font link
--->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700&display=swap" rel="stylesheet">
-
-    <!-- 
-  - custom css link
--->
-    <link rel="stylesheet" href="{% static './assets/css/style.css' %}">
-
-    <!-- 
-  - preload images
--->
-    <link rel="preload" as="image" href="{% static './assets/images/hero-bg.jpg' %}">
-    <link rel="preload" as="image" href="{% static './assets/images/hero-slide-1.jpg' %}">
-    <link rel="preload" as="image" href="{% static './assets/images/hero-slide-2.jpg' %}">
-    <link rel="preload" as="image" href="{% static './assets/images/hero-slide-3.jpeg' %}">
-
-
-    <!-- 
-  - preload images
--->
-    <link rel="preload" as="image" href="{% static './assets/images/hero-bg.jpg' %}">
-    <link rel="preload" as="image" href="{% static './assets/images/hero-slide-1.jpg' %}">
-    <link rel="preload" as="image" href="{% static './assets/images/hero-slide-2.jpg' %}">
-    <link rel="preload" as="image" href="{% static './assets/images/hero-slide-3.jpeg' %}">
-
-    <!-- 
-  - favicon
--->
-    <link rel="shortcut icon" href="{% static './favicon.svg' %}" type="image/svg+xml">
-
-    <!-- 
-  - google font link
--->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#081310">
+  <title>{% block title %}PlayerMarket{% endblock %}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="{% static 'css/player-market.css' %}">
 </head>
-
-<body class="w3-light-grey" style=" background-color: rgb(255, 255, 255) !important; ">
-
-    <!-- (#HEADER) -->
-
-
-    <header class="header" data-header style="background:rgb(0, 142, 165); height: 75px">
-
-        <div class="container">
-
-            <!--logo in header (pc)  -->
-            <a href="{% url 'home:home_detail' %}" class="logo">
-                <img src="{% static 'assets/images/logo-light.png' %}" width="150" height="24" alt="pass & shot home"
-                    class="logo-light">
-                <img src="{% static 'assets/ball.png' %}" width="24" height="24" alt="ball" class="logo-ball">
-                <img src="{% static 'assets/images/logo-dark.png' %}" width="150" height="24" alt="pass & shot home"
-                    class="logo-dark">
-            </a>
-
-            <nav class="navbar" data-navbar>
-                <!-- logo for mobile in hamburger menu -->
-                <div class="navbar-top">
-                    <a href="{% url 'home:home_detail' %}" class="logo">
-                        <img src="{% static 'assets/images/logo-light.png' %}" width="74" height="24"
-                            alt="pass & shot home">
-                    </a>
-                    <!-- x button -->
-                    <button class="nav-close-btn" aria-label="close menu" data-nav-toggler>
-                        <ion-icon name="close-outline" aria-hidden="true"></ion-icon>
-                    </button>
-                </div>
-
-                <!--NAV IN PAGES  -->
-                <ul class="navbar-list">
-                    <li>
-                        <a href="{% url 'home:home_detail' %}" class="navbar-link">Home</a>
-                    </li>
-                    <li>
-                        <a href="{% url 'about:about_detail' %}" class="navbar-link">About us</a>
-                    </li>
-                    <li>
-                        <a href="{% url 'players:player_list' %}" class="navbar-link">Players</a>
-                    </li>
-                    <li>
-                        <a href="{% url 'coaches:coaches_list' %}" class="navbar-link">Coaches</a>
-                    </li>
-                    <li>
-                        <a href="{% url 'contact:contact' %}" class="navbar-link">Contact</a>
-                    </li>
-                </ul>
-
-                <div class="wrapper">
-                    <a href="{{user.profile.facebook}}" class="contact-link">{{user.profile.email}}</a>
-
-                    <a href="{{user.profile.phone_number}}" class="contact-link">{{user.profile.phone_number}}</a>
-                </div>
-                <!-- social madia in mobile hamburger menu -->
-                <ul class="social-list">
-                    <li>
-                        <a href="#" class="social-link">
-                            <ion-icon name="logo-twitter"></ion-icon>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="social-link">
-                            <ion-icon name="logo-facebook"></ion-icon>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="social-link">
-                            <ion-icon name="logo-dribbble"></ion-icon>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="social-link">
-                            <ion-icon name="logo-instagram"></ion-icon>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#" class="social-link">
-                            <ion-icon name="logo-youtube"></ion-icon>
-                        </a>
-                    </li>
-                </ul>
-
-            </nav>
-            <!-- shop button -->
-            <a href="{% url 'tshirt:tshirt_list' %}" class="btn btn-primary">shop</a>
-
-            <button class="nav-open-btn" aria-label="open menu" data-nav-toggler>
-                <ion-icon name="menu-outline" aria-hidden="true"></ion-icon>
-            </button>
-
-            <div class="overlay" data-nav-toggler data-overlay></div>
-
-        </div>
-    </header>
-
-    <!-- (#HEADER) -->
-
-
-
-    {% block body %}
-
-
-    {% endblock body %}
-
-
-
-    <footer class="footer" style="margin-bottom: -700px;">
-        <div class="container grid-list">
-
-            <div class="footer-brand">
-
-                <a href="#" class="logo">
-                    <img src="{{ home.logo.url}}" width="174" height="94"
-                        alt="pass & shot home">
-                </a>
-
-                <p class="footer-text">
-                     {{ home.descrabtion}}
-                </p>
-
-                <ul class="social-list">
-
-                    <li>
-                        <a href="{{home.facebook}}" class="social-link">
-                            <ion-icon name="logo-facebook"></ion-icon>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="{{home.x}}" class="social-link">
-                            <ion-icon name="logo-twitter"></ion-icon>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="{{home.instgram}}" class="social-link">
-                            <ion-icon name="logo-instagram"></ion-icon>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="{{home.youtube}}" class="social-link">
-                            <ion-icon name="logo-github"></ion-icon>
-                        </a>
-                    </li>
-
-                </ul>
-
-            </div>
-
-            <ul class="footer-list">
-
-                <li>
-                    <p class="h4 footer-list-title">Get in Touch</p>
-                </li>
-
-                <li>
-                    <address class="footer-text">
-                        {{ home.addris}}
-                    </address>
-                </li>
-
-                <li>
-                    <a href="mailto:any@email.com" class="footer-link">{{home.email}}</a>
-                </li>
-
-                <li>
-                    <a href="tel:010000000000000" class="footer-link">{{home.phone_numper}}</a>
-                </li>
-
-            </ul>
-
-
-
-
-        </div>
-    </footer>
-
-
-    <script src="{% static 'assets/js/script.js' %}"></script>
-
-    <!-- 
-  - ionicon
--->
-
-    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-
-
+<body>
+  <header class="site-header" data-header>
+    <div class="site-shell header-inner">
+      <a href="{% url 'home:home_detail' %}" class="brand" aria-label="PlayerMarket home">
+        {% if home.logo %}<img src="{{ home.logo.url }}" alt="PlayerMarket">{% else %}<span>Player<span>Market</span></span>{% endif %}
+      </a>
+      <button class="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false" data-nav-toggler><span></span><span></span><span></span></button>
+      <nav class="site-nav" data-navbar aria-label="Main navigation">
+        <div class="nav-mobile-head"><span>Menu</span><button class="nav-close" type="button" aria-label="Close navigation" data-nav-toggler>&times;</button></div>
+        <a href="{% url 'home:home_detail' %}" class="nav-link">Home</a>
+        <a href="{% url 'players:player_list' %}" class="nav-link">Players</a>
+        <a href="{% url 'coaches:coaches_list' %}" class="nav-link">Coaches</a>
+        <a href="{% url 'about:about_detail' %}" class="nav-link">About</a>
+        <a href="{% url 'contact:contact' %}" class="nav-link">Contact</a>
+        <a href="{% url 'tshirt:tshirt_list' %}" class="nav-shop">Shop</a>
+      </nav>
+      <div class="nav-scrim" data-overlay data-nav-toggler></div>
+    </div>
+  </header>
+  <main>{% block body %}{% endblock body %}</main>
+  <footer class="site-footer">
+    <div class="site-shell footer-grid">
+      <div>
+        <a href="{% url 'home:home_detail' %}" class="brand footer-brand">{% if home.logo %}<img src="{{ home.logo.url }}" alt="PlayerMarket">{% else %}<span>Player<span>Market</span></span>{% endif %}</a>
+        {% if home.descraption %}<p class="footer-copy">{{ home.descraption }}</p>{% endif %}
+      </div>
+      <div class="footer-contact"><p class="footer-label">Get in touch</p>{% if home.addres %}<p>{{ home.addres }}</p>{% endif %}{% if home.email %}<a href="mailto:{{ home.email }}">{{ home.email }}</a>{% endif %}{% if home.phone_numper %}<a href="tel:{{ home.phone_numper }}">{{ home.phone_numper }}</a>{% endif %}</div>
+      <div class="footer-socials" aria-label="Social links">{% if home.facebook %}<a href="{{ home.facebook }}" aria-label="Facebook"><i class="fa fa-facebook"></i></a>{% endif %}{% if home.x %}<a href="{{ home.x }}" aria-label="X"><i class="fa fa-twitter"></i></a>{% endif %}{% if home.instagram %}<a href="{{ home.instagram }}" aria-label="Instagram"><i class="fa fa-instagram"></i></a>{% endif %}{% if home.youtube %}<a href="{{ home.youtube }}" aria-label="YouTube"><i class="fa fa-youtube-play"></i></a>{% endif %}</div>
+    </div>
+  </footer>
+  <script src="{% static 'assets/js/script.js' %}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script>
 </body>
-
 </html>

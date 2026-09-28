@@ -1,146 +1,25 @@
 {% extends "base.html" %}
-
-{% block title %} Players {% endblock %}
-
-{% load static %}
-
-
+{% block title %}Players | PlayerMarket{% endblock %}
 {% block body %}
-
-
-
-<section class="fifa-card-section">
-
-    <h2>Player cards</h2>
-    <div class="card-grid">   
-
-        {% for player in players %}
-
-
-            <div class="cards-container">
-
-                <div class="fut-player-card">
-                    <div class="player-card-top">
-                        <div class="player-master-info">
-                            <div class="player-rating">
-                                <span>{{ player.over_rating }}</span>
-                            </div>
-                            <div class="player-position">
-                                <span>{{ player.position }}</span>
-                            </div>
-                            <div class="player-nation">
-                                <img src="https://flagcdn.com/24x18/{{ player.country.code|lower }}.png"
-                                alt="{{ player.country.name }} flag"
-                                draggable="false" />
-
-
-                            </div>
-                            <div class="player-club">
-                                <img src="{{ player.club_flag.url }}" alt="club flag"
-                                    draggable="false" />
-                            </div>
-                        </div>
-
-                        <div class="player-picture">
-                            <img class="player-img" src="{{ player.imge.url }}">
-                        </div>
-
-                    </div>
-                    <div class="player-card-bottom">
-                        <div class="player-info">
-                            <!-- Player Name-->
-                            <div class="player-name" style=" color: #e9cc74;">
-                                <span>{{player.name}}</span>
-
-
-                            </div>
-                            <!-- Player Features-->
-                            <div class="player-features" >
-                                <div class="player-features-col">
-                                    <span>
-                                        <div class="player-feature-value">{{ player.Pace }}</div>
-                                        <div class="player-feature-title">PAC</div>
-                                    </span>
-                                    <span>
-                                        <div class="player-feature-value">{{ player.shooting }}</div>
-                                        <div class="player-feature-title">SHO</div>
-                                    </span>
-                                    <span>
-                                        <div class="player-feature-value">{{ player.passing }}</div>
-                                        <div class="player-feature-title">PAS</div>
-                                    </span>
-                                </div>
-                                <div class="player-features-col">
-                                    <span>
-                                        <div class="player-feature-value">{{ player.dribbling }}</div>
-                                        <div class="player-feature-title">DRI</div>
-                                    </span>
-                                    <span>
-                                        <div class="player-feature-value">{{ player.Defense }}</div>
-                                        <div class="player-feature-title">DEF</div>
-                                    </span>
-                                    <span>
-                                        <div class="player-feature-value">{{ player.Physical }}</div>
-                                        <div class="player-feature-title">PHY</div>
-                                    </span>
-                                </div>
-
-
-               
-
-                                
-                            </div>
-                            <a href="{{ player.get_absolute_url }}" class="btn btn-warning" style="margin: 20px 0 0 10px; border-color: #e9cc74;">
-                                Player Detail
-                            </a>
-                        </div>
-
- 
-                    </div>
-
-                </div>
-            </div>
-
-
-        {% endfor %}
-
-
-
-    </div> 
-
-
-    {% if is_paginated %}
-        <nav aria-label="Page navigation">
-        <ul class="pagination pagination-lg d-flex justify-content-center">
-
-            {# Previous page number #}
-            {% if page_obj.has_previous %}
-            <li class="page-item">
-                <a class="page-link" href="?page={{ page_obj.previous_page_number }}">{{ page_obj.previous_page_number }}</a>
-            </li>
-            {% endif %}
-
-            {# Current page (highlighted) #}
-            <li class="page-item active" aria-current="page">
-            <span class="page-link">
-                {{ page_obj.number }}
-                <span class="sr-only">(current)</span>
-            </span>
-            </li>
-
-            {# Next page number #}
-            {% if page_obj.has_next %}
-            <li class="page-item">
-                <a class="page-link" href="?page={{ page_obj.next_page_number }}">{{ page_obj.next_page_number }}</a>
-            </li>
-            {% endif %}
-
-        </ul>
-        </nav>
-    {% endif %}
-
-   
-      
+<section class="listing-page section-space">
+  <div class="site-shell">
+    <div class="section-heading"><div><p class="eyebrow">Scouting network</p><h1>Discover players</h1><p class="section-lead">Explore football profiles built for a clearer view of every player's strengths.</p></div></div>
+    <div class="player-grid">
+      {% for player in players %}
+      <article class="player-card">
+        <a class="player-card-image" href="{{ player.get_absolute_url }}" aria-label="View {{ player.name }} profile"><img src="{{ player.imge.url }}" alt="{{ player.name }}"></a>
+        <div class="player-card-body">
+          <div class="player-topline"><span class="rating">{{ player.over_rating }}</span><span class="position">{{ player.position }}</span></div>
+          <h2><a href="{{ player.get_absolute_url }}">{{ player.name }}</a></h2>
+          <div class="club-line"><img src="{{ player.club_flag.url }}" alt="{{ player.club_name }} crest"><span>{{ player.club_name }}</span></div>
+          <div class="country-line"><img src="https://flagcdn.com/24x18/{{ player.country.code|lower }}.png" alt="{{ player.country.name }} flag"><span>{{ player.country.name }}</span></div>
+          <div class="player-skills" aria-label="Player attributes"><span><b>{{ player.Pace }}</b>PAC</span><span><b>{{ player.shooting }}</b>SHO</span><span><b>{{ player.passing }}</b>PAS</span><span><b>{{ player.dribbling }}</b>DRI</span><span><b>{{ player.Defense }}</b>DEF</span><span><b>{{ player.Physical }}</b>PHY</span></div>
+          <a href="{{ player.get_absolute_url }}" class="card-cta">View profile <span aria-hidden="true">→</span></a>
+        </div>
+      </article>
+      {% empty %}<div class="empty-state"><p class="eyebrow">No profiles yet</p><h2>Players will appear here soon.</h2></div>{% endfor %}
+    </div>
+    {% if is_paginated %}<nav class="market-pagination" aria-label="Player pages">{% if page_obj.has_previous %}<a href="?page={{ page_obj.previous_page_number }}" aria-label="Previous page">← <span>Previous</span></a>{% else %}<span class="is-disabled">← <span>Previous</span></span>{% endif %}<span class="pagination-current" aria-current="page">{{ page_obj.number }}</span>{% if page_obj.has_next %}<a href="?page={{ page_obj.next_page_number }}" aria-label="Next page"><span>Next</span> →</a>{% else %}<span class="is-disabled"><span>Next</span> →</span>{% endif %}</nav>{% endif %}
+  </div>
 </section>
-
 {% endblock body %}

@@ -14,7 +14,7 @@ def players_list(request):
     player_list = Players.objects.all()
     
     # pagination
-    paginator = Paginator(player_list, 4) 
+    paginator = Paginator(player_list, 6) 
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 

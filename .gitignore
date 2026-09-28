@@ -23,3 +23,5 @@ staticfiles/
 
 # Local media uploads
 media/
+
+admin_password.txt

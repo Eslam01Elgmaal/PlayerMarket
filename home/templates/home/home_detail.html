@@ -1,224 +1,30 @@
- 
-       
 {% extends "base.html" %}
-
-{% block title %} bass & Shot {% endblock %}
-
 {% load static %}
+{% block title %}PlayerMarket | Football scouting{% endblock %}
 {% block body %}
-
-
-
- 
- <main>
-    <article>
-
-      <!-- (- #HERO & slider (frist section in home page) )-->
-
-      <section style="margin-top: -30px;">
-
-        {% if home.videoH %}
-            <video
-                src="{{ home.videoH.url }}"
-                type="video/mp4"
-                class="home-video"
-                height="100%"
-                loop
-                muted
-                autoplay
-                controls>
-            </video>
-        {% endif %}
-
-        <div class="container">
-
-            <div class="hero-content" style="position: absolute; top: 550px;">
-
-                <!-- text image -->
-                <h1 class="h1 hero-title">
-                    <img src="{{ home.logo.url }}" width="300" height="100" alt="">
-                </h1>
-
-                <p class="hero-text">
-                    {{ home.descraption }}
-                </p>
-
-            </div>
-
-        </div>
-
-    </section>
-
-      <!-- (- Advantages of the company) -->
-
-      <section class="section service" aria-labelledby="service-label">
-        <div class="container">
-
-          <p class="section-subtitle" id="service-label"></p>
-
-          <h2 class="h2 section-title">
-            Advantages of the company pass & shot
-          </h2>
-
-          <ul class="grid-list">
-
-            <li>
-              <div class="service-card">
-
-                <div class="card-icon">
-                  <!-- map icon -->
-                  <ion-icon name="map-outline"aria-hidden="true"></ion-icon>
-                </div>
-
-                <h3 class="h4 card-title">Full coverage of all governorates of Egypt.</h3>
-
-                <p class="card-text">
-                  We seek to discover talents in various governorates of Egypt as an application of the principle of equal
-                   opportunities among all talented players who have not found a refuge to nurture and showcase their skills.
-                </p>
-
-              </div>
-            </li>
-
-            <li>
-              <div class="service-card">
-
-                <div class="card-icon">
-                  <ion-icon name="shield-checkmark-outline" aria-hidden="true"></ion-icon>
-                </div>
-
-                <h3 class="h4 card-title">Professional team</h3>
-
-                <p class="card-text">
-                  pass & shot.com operates under the management of a competent team that includes all specialties
-                  to ensure the effective management of the system, which guarantees the success of all beneficiaries.
-                </p>
-
-              </div>
-            </li>
-
-            <li>
-              <div class="service-card">
-
-                <div class="card-icon">
-                  <ion-icon name="cloud-download-outline" aria-hidden="true"></ion-icon>
-                </div>
-
-                <h3 class="h4 card-title">A comprehensive package of services.</h3>
-
-                <p class="card-text">
-                  Some believe that marketing players is the sole purpose of the project,
-                  but we offer a range of services that ensure the advancement of players technically, physically, and mentally.
-                </p>
-
-              </div>
-            </li>
-
-            <li>
-              <div class="service-card">
-
-                <div class="card-icon">
-                  <ion-icon name="pie-chart-outline" aria-hidden="true"></ion-icon>
-                </div>
-
-                <h3 class="h4 card-title">Marketing players locally and internationally.</h3>
-
-                <p class="card-text">
-                  From our belief in the Egyptian player and his ability to compete,
-                  it was necessary for us to harness all the capabilities so that the world could see those exceptional talents.
-                </p>
-
-              </div>
-            </li>
-
-          </ul>
-
-        </div>
-      </section>
-       <!-- (- #STATS) (counter)  -->
-
-      <section class="stats" aria-label="our stats">
-        <div class="container">
-
-          <ul class="stats-card has-bg-image" style="background-image: url('static/assets/images/stats-bg.jpg')">
-            <li>
-              <p class="card-text">
-                <span class="h1">700</span>
-                <spna class="span">players sold </spna>
-              </p>
-            </li>
-            <li>
-              <p class="card-text">
-                <span class="h1">100</span>
-                <spna class="span">coaches solds</spna>
-              </p>
-            </li>
-            <li>
-              <p class="card-text">
-                <span class="h1">46</span>
-                <spna class="span">OUR PLAYERS</spna>
-              </p>
-            </li>
-            <li>
-              <p class="card-text">
-                <span class="h1">150</span>
-                <spna class="span">TRANSFERS </spna>
-              </p>
-            </li>
-          </ul>
-
-        </div>
-      </section>
-
-      <!-- - #ABOUt us  -->
-
-      <section class="about" aria-labelledby="about-label">
-        <div class="container">
-
-          <figure class="about-banner">
-            <img src="{{home.logo_black.url}}" width="800" height="580" loading="lazy" alt="about banner"
-              class="w-100">
-          </figure>
-
-          <div class="about-content">
-
-     
-
-            <ul>
-
-              {% for why in why_list %}
-
-              <li class="about-item">
-                <div class="accordion-card expanded" data-accordion>
-
-                  <h3 class="card-title">
-                    <button class="accordion-btn" data-accordion-btn>
-                      <ion-icon name="chevron-down-outline" aria-hidden="true" class="down"></ion-icon>
-
-                      <spna class="span h5">{{why.titel}}</span>
-                    </button>
-                  </h3>
-
-                  <p class="accordion-content">{{why.desc_why}}
-                  </p>
-
-                </div>
-              </li>
-
-
-              {% endfor %}
-
-            </ul>
-
-          </div>
-
-        </div>
-      </section>
-
-      <!-- (-footer  (#CTA) -->
-
-
-    </article>
-  </main>
-
+<section class="market-hero">
+  <div class="hero-media">{% if home.home_background %}<img src="{{ home.home_background.url}}" alt="">{% else %}<img src="{% static 'assets/images/hero-bg.jpg' %}" alt="">{% endif %}</div>
+  <div class="hero-shade"></div>
+  <div class="site-shell hero-content">
+    {% if home.logo %}<img class="hero-logo" src="{{ home.section_logo.url }}" alt="PlayerMarket">{% endif %}
+    <p class="eyebrow">Football discovery, elevated</p>
+    <h1>Discover talent.<br><em>Build the future.</em></h1>
+    {% if home.descraption %}<p class="hero-copy">{{ home.descraption }}</p>{% endif %}
+    <div class="hero-actions"><a href="{% url 'players:player_list' %}" class="button button-primary">Explore players <span>→</span></a><a href="{% url 'contact:contact' %}" class="button button-secondary">Talk to us</a></div>
+  </div>
+</section>
+<section class="section-space value-section">
+  <div class="site-shell">
+    <div class="section-heading"><div><p class="eyebrow">Our approach</p><h2>Designed for football's next opportunity.</h2></div><p class="section-lead">PlayerMarket brings player discovery and professional representation into one focused, human platform.</p></div>
+    <div class="value-grid">
+      {% for why in why_list %}<article class="value-card"><span class="value-index">0{{ forloop.counter }}</span><h3>{{ why.titel }}</h3><p>{{ why.desc_why }}</p></article>{% empty %}<article class="value-card"><h3>Player-focused discovery</h3></article>{% endfor %}
+    </div>
+  </div>
+</section>
+<section class="platform-section section-space">
+  <div class="site-shell platform-grid">
+    <div class="platform-image">{% if home.logo_black %}<img src="{{ home.logo_black.url }}" alt="PlayerMarket">{% endif %}</div>
+    <div><p class="eyebrow">The platform</p><h2>Every profile tells the full football story.</h2>{% if home.intro_desc %}<p class="section-lead">{{ home.intro_desc }}</p>{% endif %}<a href="{% url 'players:player_list' %}" class="text-link">Browse player profiles <span>→</span></a></div>
+  </div>
+</section>
 {% endblock body %}
